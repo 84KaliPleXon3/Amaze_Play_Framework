@@ -1,0 +1,17 @@
+@(userForm: Form[models.Commodity])
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1> Edit </h1>
+      @helper.form(action = routes.Application.postedititem()) {
+      @helper.inputText(userForm("commodityId"))
+      @helper.inputText(userForm("commodityName"))
+      @helper.inputText(userForm("price"))
+      @helper.inputText(userForm("agio"))
+      @helper.inputText(userForm("picture"))
+      @helper.inputText(userForm("cType"))
+      <input type="submit">
+    }
+  </body>
+</html>

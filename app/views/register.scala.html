@@ -1,0 +1,17 @@
+@(userForm: Form[util.Registration])
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1> Registration </h1>
+      @helper.form(action = routes.Application.postregister()) {
+      @helper.inputText(userForm("username"))
+      @helper.inputPassword(userForm("password"))
+      @helper.checkbox(userForm("sellers"),
+    '_showConstraints->false,
+    '_disabled->""
+    )
+      <input type="submit">
+    }
+  </body>
+</html>

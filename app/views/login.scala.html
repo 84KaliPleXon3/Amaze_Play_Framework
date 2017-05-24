@@ -1,0 +1,13 @@
+@(userForm: Form[util.Login])
+
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1> Login </h1>
+      @helper.form(action = routes.Application.postlogin()) {
+      @helper.inputText(userForm("username"))
+      @helper.inputPassword(userForm("password"))
+      <input type="submit">
+    }
+  </body>
+</html>

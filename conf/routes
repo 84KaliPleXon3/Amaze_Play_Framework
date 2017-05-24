@@ -1,0 +1,37 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+GET     /register                   controllers.Application.register()
+    
+POST    /register                   controllers.Application.postregister()
+
+GET     /login                      controllers.Application.login()
+    
+POST     /login                     controllers.Application.postlogin()
+
+GET     /item                       controllers.Application.item(id: Int ?= 0)
+
+GET     /edititem                   controllers.Application.edititem(id: Int ?= 0)
+
+GET     /postedititem               controllers.Application.postedititem()
+
+GET     /delitem                    controllers.Application.delitem(id: Int)
+
+POST     /item                      controllers.Application.postitem()
+
+GET     /issue                      controllers.Application.issue()
+    
+POST    /issue                      controllers.Application.postissue()
+
+GET 	/business                   controllers.Application.business()
+
+POST    /business			 		controllers.Application.postbusiness()
+
+GET      /pass                      controllers.Application.pass(id: Int)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
