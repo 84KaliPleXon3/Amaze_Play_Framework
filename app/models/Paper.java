@@ -32,19 +32,18 @@ public class Paper extends Model {
     }
     
     public static Paper findById (int issueid) {
-        return find.where().eq("issueid", issueid).findUnique();
+        return find.ref(issueid);
     }
     
-    public static Paper findByName (String author) {
-        return find.where().eq("author", author).findUnique();
+    public static List<Paper> findByName (String author) {
+        return find.where().eq("author", author).findList();
     }
     
-    public static void delById (int issueid) {                //返回属于某个商家的所有商品
-        Paper paper = findById(issueid);
-        paper.delete();
+    public static void delById (int issueid) {
+        find.ref(issueid).delete();
     }
     
-    public static boolean isbelong (String username,int issueid) {    //某个商品是否属于某个商家
+    public static boolean isbelong (String username,int issueid) { 
         Paper paper = findById(issueid);
         return paper!=null && paper.author.equals(username);
     }

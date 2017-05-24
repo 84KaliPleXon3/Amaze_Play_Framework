@@ -36,16 +36,15 @@ public class Commodity extends Model {
     }
     
     public static Commodity findById (int commodityId) {              //根据id返回商品
-        return find.where().eq("commodityId", commodityId).findUnique();
+        return find.ref(commodityId);
     }
     
-    public static Commodity findByUser (String username) {                //返回属于某个商家的所有商品
-        return find.where().eq("user", username).findUnique();
+    public static List<Commodity> findByUser (String username) {                //返回属于某个商家的所有商品
+        return find.where().eq("user", username).findList();
     }
     
-    public static void delById (int commodityId) {                //返回属于某个商家的所有商品
-        Commodity commodity = findById(commodityId);
-        commodity.delete();
+    public static void delById (int commodityId) {
+        find.ref(commodityId).delete();
     }
     
     public static boolean isbelong (String username,int commodityId) {    //某个商品是否属于某个商家

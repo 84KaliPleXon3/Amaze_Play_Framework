@@ -29,7 +29,7 @@ public class Checkstore extends Model {
     }
     
     public static void pass (int checkId) {             
-        Checkstore check = find.where().eq("checkId", checkId).findUnique();
+        Checkstore check = find.ref(checkId);
         Store store = new Store(check.storename,check.user,check.description);
         store.save();
         check.delete();
