@@ -121,7 +121,7 @@ public class Application extends Controller {
     public static Result business() {               //如果没有商店，则返回开店请求，有商店返回商店
         if(User.isseller(session("user"))){ 
             if (Store.hasStore(session("user"))){
-                List<Commodity> = Commodity.findByUser(session("user"));
+                List<Commodity> commodity = Commodity.findByUser(session("user"));
                 return ok("进入你的商店");
             }
             else{
@@ -185,9 +185,9 @@ public class Application extends Controller {
     public static Result admin() {                           //管理员界面
         if(!User.isadmin(session("user")))        
             return redirect("/login");
-        List<User> = User.findAll();                          //所有用户
-        List<Checkstore> = Checkstore.findAll();               //所有开店请求
-        List<Store> = Store.findAll();                        //所有商店
+        List<User> user= User.findAll();                          //所有用户
+        List<Checkstore> checkstore = Checkstore.findAll();               //所有开店请求
+        List<Store> store = Store.findAll();                        //所有商店
         return ok("进入管理员界面");
     }
     
