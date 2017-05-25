@@ -37,7 +37,7 @@ GET      /pass                      controllers.Application.pass(id: Int)
 
 GET      /addcart                      controllers.Application.addcart(id: Int,num:Int ?= 1)
 
-GET      /cart                      controllers.Application.cart()
+GET      /checkout                      controllers.Application.cart()
 
 GET      /delcart                      controllers.Application.delcart(id: Int)
 
