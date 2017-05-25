@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
+import java.util.Date;
 
 @Entity
 public class Paper extends Model {
@@ -16,13 +17,13 @@ public class Paper extends Model {
     public String title;
     public String author;
     public String content;
-    public String time;
+    public Date time;
     
     public Paper(String title,String author,String content){
         this.title = title;
         this.author = author;
         this.content = content;
-        this.time = "2017";
+        this.time = new Date();
     }
     
     public static Finder<Integer,Paper> find =  new Finder<Integer,Paper>(Integer.class, Paper.class);

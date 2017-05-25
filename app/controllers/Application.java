@@ -13,12 +13,13 @@ import java.util.List;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(index.render("Your new application is ready."));
+        List<Commodity> commodity = Commodity.findNew();
+        return ok(index.render(commodity));
     }
     
     public static Result register() {
-        Form<Registration> userForm = Form.form(Registration.class);
-        return ok(views.html.register.render(userForm));
+        //Form<Registration> userForm = Form.form(Registration.class);
+        return ok(views.html.register.render());
     }
 
     public static Result postregister() {
@@ -30,13 +31,15 @@ public class Application extends Controller {
         if(registration.sellers)
             powerid = 2;
         User user = new User(registration.username, registration.password, powerid);
-        user.save(); 
-        return ok("registered"); 
+        user.save();
+        session().clear();
+        session("user",registration.username);      //注册成功直接登录跳转
+        return ok("success"); 
     }
     
     public static Result login() {
-        Form<Login> userForm = Form.form(Login.class);
-        return ok(views.html.login.render(userForm));
+        //Form<Login> userForm = Form.form(Login.class);
+        return ok(views.html.login.render());
     }
     
     public static Result postlogin() {
@@ -46,15 +49,16 @@ public class Application extends Controller {
         } else {
             session().clear();
             session("user",userForm.get().username);
-            return ok("欢迎回来");
+            return ok("success");
         }
     }
     
     public static Result item(int id) {
-        if(id <1)
+        if(id <1 || Commodity.findById(id)==null)
             return redirect("/");
         Commodity commodity = Commodity.findById(id);
-        return ok("商品id"+id);
+        List<Comment> comment = Comment.findById(id);
+        return ok(views.html.item.render(commodity,comment));
     }
     
     public static Result delitem(int id) {
@@ -85,6 +89,7 @@ public class Application extends Controller {
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
         Shelves shelve =  userForm.get();
         Commodity commodity = new Commodity(shelve.commodityName,shelve.price,shelve.agio,shelve.picture,shelve.cType,session("user"));
+        commodity.save();
         return ok("添加成功");
     }
     
@@ -107,7 +112,11 @@ public class Application extends Controller {
     
     public static Result issue() {                           //获取全部帖子
         List<Paper> papers = Paper.findAll();
-        return ok("获取全部文章");
+        return ok(views.html.issue.render(papers));
+    }
+    
+    public static Result editissue() {                           //获取全部帖子
+        return ok(views.html.editissue.render());
     }
   
     public static Result postissue() {                        //发表帖子
@@ -153,12 +162,12 @@ public class Application extends Controller {
     public static Result postdiscuss() {                  //发表评论
         Form<Discuss> userForm = Form.form(Discuss.class).bindFromRequest();
         Discuss discuss = userForm.get();
-        if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
+       //if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
             Comment comment  = new Comment(discuss.commodityId, session("user"),discuss.content);
             comment.save();
             return ok("评论发表成功");
-        }
-        return redirect("/login");
+       // }
+       // return redirect("/login");
     }
     
     public static Result addcart(int id,int num) {
@@ -172,7 +181,7 @@ public class Application extends Controller {
         if(!User.iscustomer(session("user")))              //不是顾客或没登录
             return redirect("/login");
         List<Cart> cart = Cart.findByUser(session("user"));
-        return ok("返回所有购物车");
+        return ok(views.html.cart.render());
     }
     
     public static Result delcart(int id) {                           //删除购物车特定商品
@@ -183,12 +192,16 @@ public class Application extends Controller {
     }
     
     public static Result admin() {                           //管理员界面
-        if(!User.isadmin(session("user")))        
-            return redirect("/login");
+        //if(!User.isadmin(session("user")))        
+       //     return redirect("/login");
         List<User> user= User.findAll();                          //所有用户
         List<Checkstore> checkstore = Checkstore.findAll();               //所有开店请求
         List<Store> store = Store.findAll();                        //所有商店
-        return ok("进入管理员界面");
+        return ok(views.html.admin.render());
     }
     
+    public static Result contact() {                           //个人中心
+        return ok(views.html.contact.render());
+    }
+
 }

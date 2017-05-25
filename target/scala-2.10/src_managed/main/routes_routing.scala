@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:ea2c1cbbc155adf4f84daf23d9ffdd8d7a356b6d
-// @DATE:Thu May 25 11:11:43 HKT 2017
+// @HASH:03ae7dd1fd184fdcb9751c004d878e878cd37669
+// @DATE:Thu May 25 16:37:54 HKT 2017
 
 
 import play.core._
@@ -69,7 +69,7 @@ private[this] lazy val controllers_Application_postitem9 = Route("POST", PathPat
         
 
 // @LINE:26
-private[this] lazy val controllers_Application_issue10 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("issue"))))
+private[this] lazy val controllers_Application_issue10 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("blog"))))
         
 
 // @LINE:28
@@ -96,10 +96,26 @@ private[this] lazy val controllers_Application_pass15 = Route("GET", PathPattern
 private[this] lazy val controllers_Application_addcart16 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("addcart"))))
         
 
-// @LINE:41
-private[this] lazy val controllers_Assets_at17 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+// @LINE:40
+private[this] lazy val controllers_Application_cart17 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("cart"))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.register()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.postregister()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.postlogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.item(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """edititem""","""controllers.Application.edititem(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """postedititem""","""controllers.Application.postedititem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delitem""","""controllers.Application.delitem(id:Int)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.postitem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """issue""","""controllers.Application.issue()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """issue""","""controllers.Application.postissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.business()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.postbusiness()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """discuss""","""controllers.Application.postdiscuss()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """pass""","""controllers.Application.pass(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """addcart""","""controllers.Application.addcart(id:Int, num:Int ?= 1)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+
+// @LINE:42
+private[this] lazy val controllers_Application_delcart18 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("delcart"))))
+        
+
+// @LINE:44
+private[this] lazy val controllers_Application_admin19 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("admin"))))
+        
+
+// @LINE:46
+private[this] lazy val controllers_Application_editissue20 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("blog_single"))))
+        
+
+// @LINE:53
+private[this] lazy val controllers_Assets_at21 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
+        
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.register()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.postregister()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.postlogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.item(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """edititem""","""controllers.Application.edititem(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """postedititem""","""controllers.Application.postedititem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delitem""","""controllers.Application.delitem(id:Int)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.postitem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog""","""controllers.Application.issue()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """issue""","""controllers.Application.postissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.business()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.postbusiness()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """discuss""","""controllers.Application.postdiscuss()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """pass""","""controllers.Application.pass(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """addcart""","""controllers.Application.addcart(id:Int, num:Int ?= 1)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """cart""","""controllers.Application.cart()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delcart""","""controllers.Application.delcart(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin""","""controllers.Application.admin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog_single""","""controllers.Application.editissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -190,7 +206,7 @@ case controllers_Application_postitem9(params) => {
 // @LINE:26
 case controllers_Application_issue10(params) => {
    call { 
-        invokeHandler(controllers.Application.issue(), HandlerDef(this, "controllers.Application", "issue", Nil,"GET", """""", Routes.prefix + """issue"""))
+        invokeHandler(controllers.Application.issue(), HandlerDef(this, "controllers.Application", "issue", Nil,"GET", """""", Routes.prefix + """blog"""))
    }
 }
         
@@ -243,8 +259,40 @@ case controllers_Application_addcart16(params) => {
 }
         
 
-// @LINE:41
-case controllers_Assets_at17(params) => {
+// @LINE:40
+case controllers_Application_cart17(params) => {
+   call { 
+        invokeHandler(controllers.Application.cart(), HandlerDef(this, "controllers.Application", "cart", Nil,"GET", """""", Routes.prefix + """cart"""))
+   }
+}
+        
+
+// @LINE:42
+case controllers_Application_delcart18(params) => {
+   call(params.fromQuery[Int]("id", None)) { (id) =>
+        invokeHandler(controllers.Application.delcart(id), HandlerDef(this, "controllers.Application", "delcart", Seq(classOf[Int]),"GET", """""", Routes.prefix + """delcart"""))
+   }
+}
+        
+
+// @LINE:44
+case controllers_Application_admin19(params) => {
+   call { 
+        invokeHandler(controllers.Application.admin(), HandlerDef(this, "controllers.Application", "admin", Nil,"GET", """""", Routes.prefix + """admin"""))
+   }
+}
+        
+
+// @LINE:46
+case controllers_Application_editissue20(params) => {
+   call { 
+        invokeHandler(controllers.Application.editissue(), HandlerDef(this, "controllers.Application", "editissue", Nil,"GET", """""", Routes.prefix + """blog_single"""))
+   }
+}
+        
+
+// @LINE:53
+case controllers_Assets_at21(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """ Map static resources from the /public folder to the /assets URL path""", Routes.prefix + """assets/$file<.+>"""))
    }

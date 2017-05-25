@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:ea2c1cbbc155adf4f84daf23d9ffdd8d7a356b6d
-// @DATE:Thu May 25 11:11:43 HKT 2017
+// @HASH:03ae7dd1fd184fdcb9751c004d878e878cd37669
+// @DATE:Thu May 25 16:37:54 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,7 +13,11 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:41
+// @LINE:53
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -33,11 +37,11 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:41
+// @LINE:53
 class ReverseAssets {
     
 
-// @LINE:41
+// @LINE:53
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -46,6 +50,10 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -65,6 +73,12 @@ def at(file:String): Call = {
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:40
+def cart(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "cart")
+}
+                                                
 
 // @LINE:32
 def postbusiness(): Call = {
@@ -96,6 +110,18 @@ def postlogin(): Call = {
 }
                                                 
 
+// @LINE:44
+def admin(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "admin")
+}
+                                                
+
+// @LINE:42
+def delcart(id:Int): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "delcart" + queryString(List(Some(implicitly[QueryStringBindable[Int]].unbind("id", id)))))
+}
+                                                
+
 // @LINE:28
 def postissue(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "issue")
@@ -111,6 +137,12 @@ def pass(id:Int): Call = {
 // @LINE:20
 def postedititem(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "postedititem")
+}
+                                                
+
+// @LINE:46
+def editissue(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "blog_single")
 }
                                                 
 
@@ -134,7 +166,7 @@ def postdiscuss(): Call = {
 
 // @LINE:26
 def issue(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "issue")
+   Call("GET", _prefix + { _defaultPrefix } + "blog")
 }
                                                 
 
@@ -174,7 +206,11 @@ def delitem(id:Int): Call = {
                   
 
 
-// @LINE:41
+// @LINE:53
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -194,11 +230,11 @@ def delitem(id:Int): Call = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:41
+// @LINE:53
 class ReverseAssets {
     
 
-// @LINE:41
+// @LINE:53
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -212,6 +248,10 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -231,6 +271,17 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:40
+def cart : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.cart",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "cart"})
+      }
+   """
+)
+                        
 
 // @LINE:32
 def postbusiness : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -287,6 +338,28 @@ def postlogin : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
+// @LINE:44
+def admin : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.admin",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "admin"})
+      }
+   """
+)
+                        
+
+// @LINE:42
+def delcart : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.delcart",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "delcart" + _qS([(""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("id", id)])})
+      }
+   """
+)
+                        
+
 // @LINE:28
 def postissue : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.postissue",
@@ -315,6 +388,17 @@ def postedititem : JavascriptReverseRoute = JavascriptReverseRoute(
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "postedititem"})
+      }
+   """
+)
+                        
+
+// @LINE:46
+def editissue : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.editissue",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "blog_single"})
       }
    """
 )
@@ -358,7 +442,7 @@ def issue : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.issue",
    """
       function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "issue"})
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "blog"})
       }
    """
 )
@@ -425,7 +509,11 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:41
+// @LINE:53
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -446,11 +534,11 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:41
+// @LINE:53
 class ReverseAssets {
     
 
-// @LINE:41
+// @LINE:53
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -459,6 +547,10 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:46
+// @LINE:44
+// @LINE:42
+// @LINE:40
 // @LINE:38
 // @LINE:36
 // @LINE:34
@@ -478,6 +570,12 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 // @LINE:6
 class ReverseApplication {
     
+
+// @LINE:40
+def cart(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.cart(), HandlerDef(this, "controllers.Application", "cart", Seq(), "GET", """""", _prefix + """cart""")
+)
+                      
 
 // @LINE:32
 def postbusiness(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
@@ -509,6 +607,18 @@ def postlogin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
+// @LINE:44
+def admin(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.admin(), HandlerDef(this, "controllers.Application", "admin", Seq(), "GET", """""", _prefix + """admin""")
+)
+                      
+
+// @LINE:42
+def delcart(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.delcart(id), HandlerDef(this, "controllers.Application", "delcart", Seq(classOf[Int]), "GET", """""", _prefix + """delcart""")
+)
+                      
+
 // @LINE:28
 def postissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.postissue(), HandlerDef(this, "controllers.Application", "postissue", Seq(), "POST", """""", _prefix + """issue""")
@@ -524,6 +634,12 @@ def pass(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:20
 def postedititem(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.postedititem(), HandlerDef(this, "controllers.Application", "postedititem", Seq(), "GET", """""", _prefix + """postedititem""")
+)
+                      
+
+// @LINE:46
+def editissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.editissue(), HandlerDef(this, "controllers.Application", "editissue", Seq(), "GET", """""", _prefix + """blog_single""")
 )
                       
 
@@ -547,7 +663,7 @@ def postdiscuss(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 
 // @LINE:26
 def issue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.issue(), HandlerDef(this, "controllers.Application", "issue", Seq(), "GET", """""", _prefix + """issue""")
+   controllers.Application.issue(), HandlerDef(this, "controllers.Application", "issue", Seq(), "GET", """""", _prefix + """blog""")
 )
                       
 

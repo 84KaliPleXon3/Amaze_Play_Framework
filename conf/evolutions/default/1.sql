@@ -9,7 +9,7 @@ create table bill (
   number                    integer,
   money                     double,
   user                      varchar(255),
-  time                      varchar(255),
+  time                      datetime,
   constraint pk_bill primary key (bill_id))
 ;
 
@@ -34,7 +34,7 @@ create table comment (
   commodity_id              integer,
   user                      varchar(255),
   content                   varchar(255),
-  time                      varchar(255),
+  time                      datetime,
   constraint pk_comment primary key (comment_id))
 ;
 
@@ -46,6 +46,7 @@ create table commodity (
   picture                   varchar(255),
   c_type                    varchar(255),
   user                      varchar(255),
+  time                      datetime,
   constraint pk_commodity primary key (commodity_id))
 ;
 
@@ -54,7 +55,7 @@ create table paper (
   title                     varchar(255),
   author                    varchar(255),
   content                   varchar(255),
-  time                      varchar(255),
+  time                      datetime,
   constraint pk_paper primary key (issueid))
 ;
 
@@ -63,7 +64,7 @@ create table store (
   storename                 varchar(255),
   user                      varchar(255),
   description               varchar(255),
-  time                      varchar(255),
+  time                      datetime,
   constraint pk_store primary key (store_id))
 ;
 

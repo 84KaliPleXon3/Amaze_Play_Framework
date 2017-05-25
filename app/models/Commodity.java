@@ -7,6 +7,7 @@ import javax.persistence.Id;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
+import java.util.Date;
 
 @Entity
 public class Commodity extends Model {
@@ -19,6 +20,7 @@ public class Commodity extends Model {
     public String picture;
     public String cType;
     public String user;
+    public Date time;
     
     public Commodity(String commodityName,double price,double agio,String picture,String cType,String user){
         this.commodityName = commodityName;
@@ -27,6 +29,7 @@ public class Commodity extends Model {
         this.picture = picture;
         this.cType = cType;
         this.user = user;
+        this.time = new Date();
     }
     
     public static Finder<Integer,Commodity> find =  new Finder<Integer,Commodity>(Integer.class, Commodity.class);
@@ -36,7 +39,7 @@ public class Commodity extends Model {
     }
     
     public static Commodity findById (int commodityId) {              //根据id返回商品
-        return find.ref(commodityId);
+        return find.where().eq("commodityId", commodityId).findUnique();
     }
     
     public static List<Commodity> findByUser (String username) {                //返回属于某个商家的所有商品
@@ -50,6 +53,10 @@ public class Commodity extends Model {
     public static boolean isbelong (String username,int commodityId) {    //某个商品是否属于某个商家
         Commodity commodity = findById(commodityId);
         return commodity!=null && commodity.user.equals(username);
+    }
+    
+    public static List<Commodity> findNew () {                //返回属于某个商家的所有商品
+        return find.where().orderBy("time, time desc").setMaxRows(6).findList();
     }
 
 }
