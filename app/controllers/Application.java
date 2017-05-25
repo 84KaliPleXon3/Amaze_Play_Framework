@@ -80,19 +80,18 @@ public class Application extends Controller {
         return redirect("/login");
     }
     
-    public static Result postitem() {
+    public static Result postitem() {                 //添加商品
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
         Shelves shelve =  userForm.get();
         Commodity commodity = new Commodity(shelve.commodityName,shelve.price,shelve.agio,shelve.picture,shelve.cType,session("user"));
         return ok("添加成功");
     }
     
-    public static Result postedititem() {
+    public static Result postedititem() {                    //修改商品
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
         Shelves shelve =  userForm.get();
         if(User.isseller(session("user")) && Commodity.isbelong(session("user"),shelve.commodityId)){ 
             Commodity commodity = Commodity.findById(shelve.commodityId);
-            
             commodity.commodityName = shelve.commodityName;
             commodity.price = shelve.price;
             commodity.agio = shelve.agio;
@@ -105,12 +104,12 @@ public class Application extends Controller {
         return redirect("/login");
     }
     
-    public static Result issue() {
+    public static Result issue() {                           //获取全部帖子
         List<Paper> papers = Paper.findAll();
         return ok("获取全部文章");
     }
   
-    public static Result postissue() {
+    public static Result postissue() {                        //发表帖子
         Form<Issue> userForm = Form.form(Issue.class).bindFromRequest();
         Issue issue = userForm.get();
         Paper paper= new Paper(issue.title,session("user"),issue.content);
@@ -118,7 +117,7 @@ public class Application extends Controller {
         return ok("发表文章成功");
     }
     
-    public static Result business() {
+    public static Result business() {               //如果没有商店，则返回开店请求，有商店返回商店
         if(User.isseller(session("user"))){ 
             if (Store.hasStore(session("user"))){
                 return ok("进入你的商店");
@@ -131,7 +130,7 @@ public class Application extends Controller {
         return ok("你不是商家");
     }
     
-    public static Result postbusiness() {
+    public static Result postbusiness() {               //提交开店请求
         if(User.isseller(session("user")) && !Store.hasStore(session("user")))
             redirect("/login");
         Form<Request> userForm = Form.form(Request.class).bindFromRequest();
@@ -141,7 +140,7 @@ public class Application extends Controller {
         return ok("开店请求代审核");
     }
     
-    public static Result pass(int id) {
+    public static Result pass(int id) {                //管理员方法 商家审核通过
         if(User.isadmin(session("user"))){
             Checkstore.pass(id);
             return ok("开店审核通过");
@@ -149,7 +148,7 @@ public class Application extends Controller {
         return redirect("/login");
     }
     
-    public static Result postdiscuss() {         
+    public static Result postdiscuss() {                  //发表评论
         Form<Discuss> userForm = Form.form(Discuss.class).bindFromRequest();
         Discuss discuss = userForm.get();
         if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
@@ -163,9 +162,21 @@ public class Application extends Controller {
     public static Result addcart(int id,int num) {
         if(!User.iscustomer(session("user")))              //不是顾客或没登录
             return redirect("/login");
-        Cart cart = new Cart(id, num, session("user"));
-        cart.save();
-        return ok("添加成功");
+        Cart.addCart(id, num, session("user"));
+        return ok("添加到购物车成功");
     }
     
+    public static Result cart() {                           //获取购物车里的商品
+        if(!User.iscustomer(session("user")))              //不是顾客或没登录
+            return redirect("/login");
+        List<Cart> cart = Cart.findByUser(session("user"));
+        return ok("返回所有购物车");
+    }
+    
+    public static Result delcart(int id) {                           //删除购物车特定商品
+        if(!User.iscustomer(session("user")))              //不是顾客或没登录
+            return redirect("/login");
+        Cart.delById(id,session("user"));
+        return ok("删除商品成功");
+    }
 }

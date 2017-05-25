@@ -39,8 +39,38 @@ public class Cart extends Model {
         }
     }
     
+    public static void delById(int commodityId,String username) {
+        Cart cart = findByUser_Id(commodityId,username);
+        if(cart !=null)
+            cart.delete();
+    }
+    
+    public static void addCart(int commodityId,int number,String username) {
+        Cart cart = findByUser_Id(commodityId,username);
+        if(cart !=null){
+            cart.number=number;
+            cart.save();
+        }else{
+            Cart new_cart = new Cart(commodityId,number,username);
+            new_cart.save();
+        }
+            
+    }
+
+    public static Cart findByUser_Id(int commodityId,String username) {
+        List<Cart> cart = findByUser(username);
+        for (int i=0; i<cart.size(); i++) {
+            Cart item = cart.get(i);
+            if(item.commodityId == commodityId)
+                return item;
+        }
+        return null;
+    }
+
     public static List<Cart> findAll() {
         return find.all();
     }
+    
+    
  
 }
