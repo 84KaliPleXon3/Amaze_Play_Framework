@@ -58,7 +58,7 @@ public class Application extends Controller {
     }
     
     public static Result delitem(int id) {
-        if(id >0 && User.isseller(session("user")) && Commodity.isbelong(session("user"),id)){
+        if(id >0 && User.isseller(session("user")) && Store.hasStore(session("user")) && Commodity.isbelong(session("user"),id)){
             Commodity.delById(id);
             return ok("删除成功");
         }
@@ -66,7 +66,7 @@ public class Application extends Controller {
     }
     
     public static Result edititem(int id) {
-        if(User.isseller(session("user"))){
+        if(User.isseller(session("user")) && Store.hasStore(session("user"))){
             if(id < 1){
                 Form<Shelves> userForm = Form.form(Shelves.class);
                 return ok(views.html.additem.render(userForm));     
@@ -81,6 +81,7 @@ public class Application extends Controller {
     }
     
     public static Result postitem() {                 //添加商品
+        
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
         Shelves shelve =  userForm.get();
         Commodity commodity = new Commodity(shelve.commodityName,shelve.price,shelve.agio,shelve.picture,shelve.cType,session("user"));
@@ -120,6 +121,7 @@ public class Application extends Controller {
     public static Result business() {               //如果没有商店，则返回开店请求，有商店返回商店
         if(User.isseller(session("user"))){ 
             if (Store.hasStore(session("user"))){
+                List<Commodity> = Commodity.findByUser(session("user"));
                 return ok("进入你的商店");
             }
             else{
@@ -131,7 +133,7 @@ public class Application extends Controller {
     }
     
     public static Result postbusiness() {               //提交开店请求
-        if(User.isseller(session("user")) && !Store.hasStore(session("user")))
+        if(!User.isseller(session("user")) || Store.hasStore(session("user")))     //不是商家或者开了店 重定向
             redirect("/login");
         Form<Request> userForm = Form.form(Request.class).bindFromRequest();
         Request request = userForm.get();
@@ -179,4 +181,14 @@ public class Application extends Controller {
         Cart.delById(id,session("user"));
         return ok("删除商品成功");
     }
+    
+    public static Result admin() {                           //管理员界面
+        if(!User.isadmin(session("user")))        
+            return redirect("/login");
+        List<User> = User.findAll();                          //所有用户
+        List<Checkstore> = Checkstore.findAll();               //所有开店请求
+        List<Store> = Store.findAll();                        //所有商店
+        return ok("进入管理员界面");
+    }
+    
 }
