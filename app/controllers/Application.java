@@ -149,4 +149,23 @@ public class Application extends Controller {
         return redirect("/login");
     }
     
+    public static Result postdiscuss() {         
+        Form<Discuss> userForm = Form.form(Discuss.class).bindFromRequest();
+        Discuss discuss = userForm.get();
+        if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
+            Comment comment  = new Comment(discuss.commodityId, session("user"),discuss.content);
+            comment.save();
+            return ok("评论发表成功");
+        }
+        return redirect("/login");
+    }
+    
+    public static Result addcart(int id,int num) {
+        if(!User.iscustomer(session("user")))              //不是顾客或没登录
+            return redirect("/login");
+        Cart cart = new Cart(id, num, session("user"));
+        cart.save();
+        return ok("添加成功");
+    }
+    
 }

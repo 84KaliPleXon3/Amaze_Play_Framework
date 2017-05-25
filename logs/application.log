@@ -1,18 +1,57 @@
-2017-05-24 22:15:45,861 - [INFO] - from play in pool-4-thread-5 
+2017-05-25 11:06:22,413 - [INFO] - from play in pool-4-thread-3 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2017-05-24 22:15:51,520 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-25 11:06:28,189 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-24 22:15:51,982 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-25 11:06:29,030 - [ERROR] - from application in New I/O worker #1 
+
+
+! @745ie338b - Internal server error, for (GET) [/] ->
+
+play.api.db.evolutions.InvalidDatabaseRevision: Database 'default' needs evolution![An SQL script need to be run on your database.]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1$$anonfun$apply$1.apply$mcV$sp(Evolutions.scala:486) ~[play-jdbc_2.10.jar:2.2.6]
+	at play.api.db.evolutions.EvolutionsPlugin.withLock(Evolutions.scala:507) ~[play-jdbc_2.10.jar:2.2.6]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1.apply(Evolutions.scala:461) ~[play-jdbc_2.10.jar:2.2.6]
+	at play.api.db.evolutions.EvolutionsPlugin$$anonfun$onStart$1.apply(Evolutions.scala:459) ~[play-jdbc_2.10.jar:2.2.6]
+	at scala.collection.immutable.List.foreach(List.scala:318) ~[scala-library.jar:na]
+	at play.api.db.evolutions.EvolutionsPlugin.onStart(Evolutions.scala:459) ~[play-jdbc_2.10.jar:2.2.6]
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:88) ~[play_2.10.jar:2.2.6]
+	at play.api.Play$$anonfun$start$1$$anonfun$apply$mcV$sp$1.apply(Play.scala:88) ~[play_2.10.jar:2.2.6]
+	at scala.collection.immutable.List.foreach(List.scala:318) ~[scala-library.jar:na]
+	at play.api.Play$$anonfun$start$1.apply$mcV$sp(Play.scala:88) ~[play_2.10.jar:2.2.6]
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:88) ~[play_2.10.jar:2.2.6]
+	at play.api.Play$$anonfun$start$1.apply(Play.scala:88) ~[play_2.10.jar:2.2.6]
+	at play.utils.Threads$.withContextClassLoader(Threads.scala:18) ~[play_2.10.jar:2.2.6]
+	at play.api.Play$.start(Play.scala:87) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:139) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1$$anonfun$1.apply(ApplicationProvider.scala:112) ~[play_2.10.jar:2.2.6]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:112) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1$$anonfun$apply$1.apply(ApplicationProvider.scala:110) ~[play_2.10.jar:2.2.6]
+	at scala.util.Success.flatMap(Try.scala:200) ~[scala-library.jar:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:110) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:102) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
+
+2017-05-25 11:06:35,624 - [INFO] - from play in play-internal-execution-context-1 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-25 11:06:36,065 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2017-05-24 22:26:21,776 - [ERROR] - from application in New I/O worker #5 
+2017-05-25 11:09:13,953 - [ERROR] - from application in New I/O worker #5 
 
 
-! @745ei86p6 - Internal server error, for (GET) [/login] ->
+! @745iecd7m - Internal server error, for (GET) [/] ->
 
-play.PlayExceptions$CompilationException: Compilation error[error: incompatible types: ExpressionList<Comment> cannot be converted to List<Comment>]
+play.PlayExceptions$CompilationException: Compilation error[value addcart is not a member of object controllers.Application]
 	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
 	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
 	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
@@ -33,12 +72,12 @@ play.PlayExceptions$CompilationException: Compilation error[error: incompatible 
 	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
 
-2017-05-24 22:28:41,842 - [ERROR] - from application in New I/O worker #6 
+2017-05-25 11:09:45,149 - [ERROR] - from application in New I/O worker #5 
 
 
-! @745eig64h - Internal server error, for (GET) [/login] ->
+! @745iee7bg - Internal server error, for (GET) [/] ->
 
-play.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+play.PlayExceptions$CompilationException: Compilation error[too many arguments for method addcart: ()play.mvc.Result]
 	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
 	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
 	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
@@ -59,33 +98,47 @@ play.PlayExceptions$CompilationException: Compilation error[error: cannot find s
 	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
 	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
 
-2017-05-24 22:28:55,137 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:10:55,297 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-24 22:28:55,211 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:10:55,387 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2017-05-24 22:33:58,984 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:11:51,298 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-24 22:33:59,041 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:11:51,378 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2017-05-24 22:37:54,720 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:23:51,319 - [ERROR] - from application in New I/O worker #1 
+
+
+! @745igab4j - Internal server error, for (GET) [/] ->
+
+play.PlayExceptions$CompilationException: Compilation error[error: missing return statement]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:298) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:298) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:296) ~[na:na]
+	at scala.util.Either$LeftProjection.map(Either.scala:377) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1.reload(PlayReloader.scala:296) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:102) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
+
+2017-05-25 11:24:06,096 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-24 22:37:54,816 - [INFO] - from play in play-internal-execution-context-2 
-Application started (Dev)
-
-2017-05-24 22:40:00,364 - [INFO] - from play in play-internal-execution-context-2 
-database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
-
-2017-05-24 22:40:00,419 - [INFO] - from play in play-internal-execution-context-2 
-Application started (Dev)
-
-2017-05-24 22:43:25,999 - [INFO] - from play in play-internal-execution-context-2 
-database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
-
-2017-05-24 22:43:26,054 - [INFO] - from play in play-internal-execution-context-2 
+2017-05-25 11:24:06,153 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 

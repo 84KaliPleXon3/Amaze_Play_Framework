@@ -31,11 +31,11 @@ public class Comment extends Model {
         return find.all();
     }
     
-    public static Comment findById (int commodityId) {                //根据id返回商品
+    public static Comment findById (int commodityId) {                //根据id返回评论
         return find.ref(commodityId);
     }
     
-    public static List<Comment> findByUser (String username) {                //返回属于某个商家的所有商品
+    public static List<Comment> findByUser (String username) {                //返回属于某个买家的所有评论
         return find.where().eq("user", username).findList();
     }
     

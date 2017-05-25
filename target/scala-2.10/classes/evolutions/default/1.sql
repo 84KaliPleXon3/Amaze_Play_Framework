@@ -3,6 +3,24 @@
 
 # --- !Ups
 
+create table bill (
+  bill_id                   integer auto_increment not null,
+  commodity_id              integer,
+  number                    integer,
+  money                     double,
+  user                      varchar(255),
+  time                      varchar(255),
+  constraint pk_bill primary key (bill_id))
+;
+
+create table cart (
+  cart_id                   integer auto_increment not null,
+  commodity_id              integer,
+  number                    integer,
+  user                      varchar(255),
+  constraint pk_cart primary key (cart_id))
+;
+
 create table checkstore (
   check_id                  integer auto_increment not null,
   storename                 varchar(255),
@@ -61,6 +79,10 @@ create table user (
 # --- !Downs
 
 SET FOREIGN_KEY_CHECKS=0;
+
+drop table bill;
+
+drop table cart;
 
 drop table checkstore;
 

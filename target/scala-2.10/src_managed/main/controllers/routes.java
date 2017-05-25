@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:47280cb2500cdace031771e0445eb5c2f76ca6b9
-// @DATE:Wed May 24 20:44:05 HKT 2017
+// @HASH:ea2c1cbbc155adf4f84daf23d9ffdd8d7a356b6d
+// @DATE:Thu May 25 11:11:43 HKT 2017
 
 package controllers;
 
