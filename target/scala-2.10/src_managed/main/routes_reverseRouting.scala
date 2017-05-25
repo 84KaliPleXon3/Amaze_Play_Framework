@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:61e394c9bf562f9c6b2a6d57faabbf984bdd8244
-// @DATE:Thu May 25 19:59:53 HKT 2017
+// @HASH:73ee0eac13637477f0867baa827f3ef945b3df91
+// @DATE:Thu May 25 22:13:58 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,7 +13,8 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:55
+// @LINE:59
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -38,11 +39,11 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:55
+// @LINE:59
 class ReverseAssets {
     
 
-// @LINE:55
+// @LINE:59
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -51,6 +52,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -78,7 +80,7 @@ class ReverseApplication {
 
 // @LINE:40
 def cart(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "cart")
+   Call("GET", _prefix + { _defaultPrefix } + "checkout")
 }
                                                 
 
@@ -133,6 +135,12 @@ def postissue(): Call = {
 // @LINE:36
 def pass(id:Int): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "pass" + queryString(List(Some(implicitly[QueryStringBindable[Int]].unbind("id", id)))))
+}
+                                                
+
+// @LINE:50
+def upload(id:Int): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "upload/" + implicitly[PathBindable[Int]].unbind("id", id))
 }
                                                 
 
@@ -214,7 +222,8 @@ def delitem(id:Int): Call = {
                   
 
 
-// @LINE:55
+// @LINE:59
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -239,11 +248,11 @@ def delitem(id:Int): Call = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:55
+// @LINE:59
 class ReverseAssets {
     
 
-// @LINE:55
+// @LINE:59
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -257,6 +266,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -287,7 +297,7 @@ def cart : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.cart",
    """
       function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "cart"})
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "checkout"})
       }
    """
 )
@@ -387,6 +397,17 @@ def pass : JavascriptReverseRoute = JavascriptReverseRoute(
    """
       function(id) {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "pass" + _qS([(""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("id", id)])})
+      }
+   """
+)
+                        
+
+// @LINE:50
+def upload : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.upload",
+   """
+      function(id) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "upload/" + (""" + implicitly[PathBindable[Int]].javascriptUnbind + """)("id", id)})
       }
    """
 )
@@ -530,7 +551,8 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:55
+// @LINE:59
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -556,11 +578,11 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:55
+// @LINE:59
 class ReverseAssets {
     
 
-// @LINE:55
+// @LINE:59
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -569,6 +591,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:50
 // @LINE:48
 // @LINE:46
 // @LINE:44
@@ -596,7 +619,7 @@ class ReverseApplication {
 
 // @LINE:40
 def cart(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.cart(), HandlerDef(this, "controllers.Application", "cart", Seq(), "GET", """""", _prefix + """cart""")
+   controllers.Application.cart(), HandlerDef(this, "controllers.Application", "cart", Seq(), "GET", """""", _prefix + """checkout""")
 )
                       
 
@@ -651,6 +674,12 @@ def postissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:36
 def pass(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.pass(id), HandlerDef(this, "controllers.Application", "pass", Seq(classOf[Int]), "GET", """""", _prefix + """pass""")
+)
+                      
+
+// @LINE:50
+def upload(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.upload(id), HandlerDef(this, "controllers.Application", "upload", Seq(classOf[Int]), "POST", """""", _prefix + """upload/$id<[^/]+>""")
 )
                       
 

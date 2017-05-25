@@ -10,6 +10,10 @@ import util.*;
 import play.data.Form;
 import java.util.List;
 import java.util.ArrayList;
+import java.io.File;
+import play.mvc.Http.MultipartFormData;
+import play.mvc.Http.MultipartFormData.FilePart;
+
 public class Application extends Controller {
 
     public static Result index() {
@@ -217,5 +221,19 @@ public class Application extends Controller {
             return redirect("/login");
         Cart.buyAll(session("user"));
         return ok("购买成功");
+    }
+    
+    public static Result upload(int id) {                           //购买
+          MultipartFormData body = request().body().asMultipartFormData();
+          FilePart picture = body.getFile("picture");
+          if (picture != null) {
+            String contentType = picture.getContentType(); 
+            File file   = picture.getFile();
+            File root = Play.application().path();
+            file.renameTo(new File(root, "/public/uploads/commodity_" + id));
+            return ok("uploaded");
+          } else {
+            return badRequest("not a valid file");    
+          }
     }
 }

@@ -52,13 +52,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src=""""),_display_(Seq[Any](/*24.15*/routes/*24.21*/.Assets.at("javascripts/simpleCart.min.js"))),format.raw/*24.64*/(""""> </script>
 </head>
 <body>
+
+    <form id= "uploadForm">
+          <p >上传文件： <input type="file" name="picture"/></ p>  
+          <input type="button" value="上传" onclick="doUpload()" />  
+    </form>  
+
+<script>
+        function doUpload() """),format.raw/*34.29*/("""{"""),format.raw/*34.30*/("""  
+         var formData = new FormData($( "#uploadForm" )[0]);  
+         $.ajax("""),format.raw/*36.17*/("""{"""),format.raw/*36.18*/("""  
+              url: '/upload/1' ,  
+              type: 'POST',  
+              data: formData,  
+              async: false,  
+              cache: false,  
+              contentType: false,  
+              processData: false,  
+              success: function (returndata) """),format.raw/*44.46*/("""{"""),format.raw/*44.47*/("""  
+                  alert(returndata);  
+              """),format.raw/*46.15*/("""}"""),format.raw/*46.16*/(""",  
+              error: function (returndata) """),format.raw/*47.44*/("""{"""),format.raw/*47.45*/("""  
+                  alert(returndata);  
+              """),format.raw/*49.15*/("""}"""),format.raw/*49.16*/("""  
+         """),format.raw/*50.10*/("""}"""),format.raw/*50.11*/(""");  
+    """),format.raw/*51.5*/("""}"""),format.raw/*51.6*/("""  
+</script>
+
 <!--header-->
 <div class="header">
 	<div class="header-top">
 		<div class="container">
 			<div class="search">
 					<form>
-						<input type="text" value="Search " onFocus="this.value = '';" onBlur="if (this.value == '') """),format.raw/*33.99*/("""{"""),format.raw/*33.100*/("""this.value = 'Search';"""),format.raw/*33.122*/("""}"""),format.raw/*33.123*/("""">
+						<input type="text" value="Search " onFocus="this.value = '';" onBlur="if (this.value == '') """),format.raw/*60.99*/("""{"""),format.raw/*60.100*/("""this.value = 'Search';"""),format.raw/*60.122*/("""}"""),format.raw/*60.123*/("""">
 						<input type="submit" value="Go">
 					</form>
 			</div>
@@ -71,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="cart box_1">
 						<a href="/checkout">
 						<h3> <div class="total">购物车</div>
-							<img src=""""),_display_(Seq[Any](/*46.19*/routes/*46.25*/.Assets.at("images/cart.png"))),format.raw/*46.54*/("""" alt=""/></h3>
+							<img src=""""),_display_(Seq[Any](/*73.19*/routes/*73.25*/.Assets.at("images/cart.png"))),format.raw/*73.54*/("""" alt=""/></h3>
 						</a>
 						<!-- <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a></p> -->
 
@@ -84,7 +111,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="/"><img src=""""),_display_(Seq[Any](/*59.29*/routes/*59.35*/.Assets.at("images/logo.png"))),format.raw/*59.64*/("""" alt=""></a>
+					<a href="/"><img src=""""),_display_(Seq[Any](/*86.29*/routes/*86.35*/.Assets.at("images/logo.png"))),format.raw/*86.64*/("""" alt=""></a>
 				</div>
 		  <div class=" h_menu4">
 				<ul class="memenu skyblue">
@@ -103,17 +130,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="banner">
 		<div class="container">
-			  <script src=""""),_display_(Seq[Any](/*78.20*/routes/*78.26*/.Assets.at("javascripts/responsiveslides.min.js"))),format.raw/*78.75*/(""""></script>
+			  <script src=""""),_display_(Seq[Any](/*105.20*/routes/*105.26*/.Assets.at("javascripts/responsiveslides.min.js"))),format.raw/*105.75*/(""""></script>
   <script>
-    $(function () """),format.raw/*80.19*/("""{"""),format.raw/*80.20*/("""
-      $("#slider").responsiveSlides("""),format.raw/*81.37*/("""{"""),format.raw/*81.38*/("""
+    $(function () """),format.raw/*107.19*/("""{"""),format.raw/*107.20*/("""
+      $("#slider").responsiveSlides("""),format.raw/*108.37*/("""{"""),format.raw/*108.38*/("""
       	auto: true,
       	nav: true,
       	speed: 500,
         namespace: "callbacks",
         pager: true,
-      """),format.raw/*87.7*/("""}"""),format.raw/*87.8*/(""");
-    """),format.raw/*88.5*/("""}"""),format.raw/*88.6*/(""");
+      """),format.raw/*114.7*/("""}"""),format.raw/*114.8*/(""");
+    """),format.raw/*115.5*/("""}"""),format.raw/*115.6*/(""");
   </script>
 			<div  id="top" class="callbacks_container">
 			<ul class="rslides" id="slider">
@@ -154,20 +181,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top">
 		<h1>新品发布</h1>
 		<div class="grid-in">
-		    """),_display_(Seq[Any](/*129.8*/for(line <- lines) yield /*129.26*/{_display_(Seq[Any](format.raw/*129.27*/("""
+		    """),_display_(Seq[Any](/*156.8*/for(line <- lines) yield /*156.26*/{_display_(Seq[Any](format.raw/*156.27*/("""
 			<div class="col-md-4 grid-top">
-				<a href="/item?id="""),_display_(Seq[Any](/*131.24*/line/*131.28*/.commodityId)),format.raw/*131.40*/("""" class="b-link-stripe b-animate-go  thickbox"><img style="height:250px" class="img-responsive" src=""""),_display_(Seq[Any](/*131.142*/line/*131.146*/.picture)),format.raw/*131.154*/("""" alt="">
+				<a href="/item?id="""),_display_(Seq[Any](/*158.24*/line/*158.28*/.commodityId)),format.raw/*158.40*/("""" class="b-link-stripe b-animate-go  thickbox"><img style="height:250px" class="img-responsive" src=""""),_display_(Seq[Any](/*158.142*/line/*158.146*/.picture)),format.raw/*158.154*/("""" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
-										<span>"""),_display_(Seq[Any](/*134.18*/line/*134.22*/.commodityName)),format.raw/*134.36*/("""</span>
+										<span>"""),_display_(Seq[Any](/*161.18*/line/*161.22*/.commodityName)),format.raw/*161.36*/("""</span>
 									</h3>
 								</div>
 				</a>
 
 
-			<p><a href="/item?id="""),_display_(Seq[Any](/*140.26*/line/*140.30*/.commodityId)),format.raw/*140.42*/("""">"""),_display_(Seq[Any](/*140.45*/line/*140.49*/.commodityName)),format.raw/*140.63*/("""</a></p>
+			<p><a href="/item?id="""),_display_(Seq[Any](/*167.26*/line/*167.30*/.commodityId)),format.raw/*167.42*/("""">"""),_display_(Seq[Any](/*167.45*/line/*167.49*/.commodityName)),format.raw/*167.63*/("""</a></p>
 			</div>
-			""")))})),format.raw/*142.5*/("""
+			""")))})),format.raw/*169.5*/("""
 
 
 					<div class="clearfix"> </div>
@@ -178,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="content-top-bottom">
 		<h2>特色商品</h2>
 		<div class="col-md-6 men">
-			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*153.105*/routes/*153.111*/.Assets.at("images/t1.jpg"))),format.raw/*153.138*/("""" alt="">
+			<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*180.105*/routes/*180.111*/.Assets.at("images/t1.jpg"))),format.raw/*180.138*/("""" alt="">
 				<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in   b-delay03 ">
 										<span>女鞋</span>
@@ -190,7 +217,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="col-md-6">
 			<div class="col-md1 ">
-				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*165.106*/routes/*165.112*/.Assets.at("images/t2.jpg"))),format.raw/*165.139*/("""" alt="">
+				<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*192.106*/routes/*192.112*/.Assets.at("images/t2.jpg"))),format.raw/*192.139*/("""" alt="">
 					<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in1   b-delay03 ">
 										<span>行李箱</span>
@@ -201,7 +228,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md2">
 				<div class="col-md-6 men1">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*176.107*/routes/*176.113*/.Assets.at("images/t3.jpg"))),format.raw/*176.140*/("""" alt="">
+					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*203.107*/routes/*203.113*/.Assets.at("images/t3.jpg"))),format.raw/*203.140*/("""" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>领带</span>
@@ -211,7 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				</div>
 				<div class="col-md-6 men2">
-					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*186.107*/routes/*186.113*/.Assets.at("images/t4.jpg"))),format.raw/*186.140*/("""" alt="">
+					<a href="single.html" class="b-link-stripe b-animate-go  thickbox"><img class="img-responsive" src=""""),_display_(Seq[Any](/*213.107*/routes/*213.113*/.Assets.at("images/t4.jpg"))),format.raw/*213.140*/("""" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-top top-in2   b-delay03 ">
 										<span>男鞋</span>
@@ -246,11 +273,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 25 18:51:49 HKT 2017
+                    DATE: Thu May 25 22:13:58 HKT 2017
                     SOURCE: /root/Downloads/amaze/app/views/index.scala.html
-                    HASH: 0c44d3000a34fd94d6d6732fdfe2f375b578397a
-                    MATRIX: 783->1|901->25|999->88|1013->94|1073->133|1235->260|1249->266|1309->305|1417->377|1432->383|1489->418|2063->964|2092->965|2149->993|2179->994|2239->1025|2269->1026|2321->1049|2351->1050|2444->1107|2459->1113|2517->1149|2640->1236|2655->1242|2712->1277|2788->1325|2817->1326|2867->1348|2896->1349|2958->1375|2973->1381|3038->1424|3315->1673|3345->1674|3396->1696|3426->1697|3780->2015|3795->2021|3846->2050|4202->2370|4217->2376|4268->2405|4719->2820|4734->2826|4805->2875|4874->2916|4903->2917|4968->2954|4997->2955|5140->3071|5168->3072|5202->3079|5230->3080|5888->3702|5923->3720|5963->3721|6059->3780|6073->3784|6108->3796|6248->3898|6263->3902|6295->3910|6448->4026|6462->4030|6499->4044|6610->4118|6624->4122|6659->4134|6699->4137|6713->4141|6750->4155|6805->4178|7092->4427|7109->4433|7160->4460|7530->4792|7547->4798|7598->4825|7979->5168|7996->5174|8047->5201|8406->5522|8423->5528|8474->5555
-                    LINES: 26->1|29->1|35->7|35->7|35->7|37->9|37->9|37->9|40->12|40->12|40->12|46->18|46->18|46->18|46->18|46->18|46->18|46->18|46->18|49->21|49->21|49->21|50->22|50->22|50->22|51->23|51->23|51->23|51->23|52->24|52->24|52->24|61->33|61->33|61->33|61->33|74->46|74->46|74->46|87->59|87->59|87->59|106->78|106->78|106->78|108->80|108->80|109->81|109->81|115->87|115->87|116->88|116->88|157->129|157->129|157->129|159->131|159->131|159->131|159->131|159->131|159->131|162->134|162->134|162->134|168->140|168->140|168->140|168->140|168->140|168->140|170->142|181->153|181->153|181->153|193->165|193->165|193->165|204->176|204->176|204->176|214->186|214->186|214->186
+                    HASH: 59af0ac301f4d1b9fa5ef5992c921934d9a7ff2b
+                    MATRIX: 783->1|901->25|999->88|1013->94|1073->133|1235->260|1249->266|1309->305|1417->377|1432->383|1489->418|2063->964|2092->965|2149->993|2179->994|2239->1025|2269->1026|2321->1049|2351->1050|2444->1107|2459->1113|2517->1149|2640->1236|2655->1242|2712->1277|2788->1325|2817->1326|2867->1348|2896->1349|2958->1375|2973->1381|3038->1424|3306->1664|3335->1665|3445->1747|3474->1748|3779->2025|3808->2026|3892->2082|3921->2083|3996->2130|4025->2131|4109->2187|4138->2188|4178->2200|4207->2201|4243->2210|4271->2211|4534->2446|4564->2447|4615->2469|4645->2470|4999->2788|5014->2794|5065->2823|5421->3143|5436->3149|5487->3178|5939->3593|5955->3599|6027->3648|6097->3689|6127->3690|6193->3727|6223->3728|6367->3844|6396->3845|6431->3852|6460->3853|7118->4475|7153->4493|7193->4494|7289->4553|7303->4557|7338->4569|7478->4671|7493->4675|7525->4683|7678->4799|7692->4803|7729->4817|7840->4891|7854->4895|7889->4907|7929->4910|7943->4914|7980->4928|8035->4951|8322->5200|8339->5206|8390->5233|8760->5565|8777->5571|8828->5598|9209->5941|9226->5947|9277->5974|9636->6295|9653->6301|9704->6328
+                    LINES: 26->1|29->1|35->7|35->7|35->7|37->9|37->9|37->9|40->12|40->12|40->12|46->18|46->18|46->18|46->18|46->18|46->18|46->18|46->18|49->21|49->21|49->21|50->22|50->22|50->22|51->23|51->23|51->23|51->23|52->24|52->24|52->24|62->34|62->34|64->36|64->36|72->44|72->44|74->46|74->46|75->47|75->47|77->49|77->49|78->50|78->50|79->51|79->51|88->60|88->60|88->60|88->60|101->73|101->73|101->73|114->86|114->86|114->86|133->105|133->105|133->105|135->107|135->107|136->108|136->108|142->114|142->114|143->115|143->115|184->156|184->156|184->156|186->158|186->158|186->158|186->158|186->158|186->158|189->161|189->161|189->161|195->167|195->167|195->167|195->167|195->167|195->167|197->169|208->180|208->180|208->180|220->192|220->192|220->192|231->203|231->203|231->203|241->213|241->213|241->213
                     -- GENERATED --
                 */
             
