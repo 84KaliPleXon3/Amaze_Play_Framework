@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:73ee0eac13637477f0867baa827f3ef945b3df91
-// @DATE:Thu May 25 22:13:58 HKT 2017
+// @HASH:2c0e8d269c8917040f520e28288b0bdb66fb2187
+// @DATE:Thu May 25 23:08:23 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -144,12 +144,6 @@ def upload(id:Int): Call = {
 }
                                                 
 
-// @LINE:20
-def postedititem(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "postedititem")
-}
-                                                
-
 // @LINE:46
 def editissue(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "blog_single")
@@ -159,6 +153,12 @@ def editissue(): Call = {
 // @LINE:8
 def register(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "register")
+}
+                                                
+
+// @LINE:20
+def postedititem(id:Int): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "postedititem/" + implicitly[PathBindable[Int]].unbind("id", id))
 }
                                                 
 
@@ -413,17 +413,6 @@ def upload : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:20
-def postedititem : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.postedititem",
-   """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "postedititem"})
-      }
-   """
-)
-                        
-
 // @LINE:46
 def editissue : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.editissue",
@@ -441,6 +430,17 @@ def register : JavascriptReverseRoute = JavascriptReverseRoute(
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "register"})
+      }
+   """
+)
+                        
+
+// @LINE:20
+def postedititem : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.postedititem",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "postedititem/" + (""" + implicitly[PathBindable[Int]].javascriptUnbind + """)("id", id)})
       }
    """
 )
@@ -683,12 +683,6 @@ def upload(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:20
-def postedititem(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.postedititem(), HandlerDef(this, "controllers.Application", "postedititem", Seq(), "GET", """""", _prefix + """postedititem""")
-)
-                      
-
 // @LINE:46
 def editissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.editissue(), HandlerDef(this, "controllers.Application", "editissue", Seq(), "GET", """""", _prefix + """blog_single""")
@@ -698,6 +692,12 @@ def editissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:8
 def register(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.register(), HandlerDef(this, "controllers.Application", "register", Seq(), "GET", """""", _prefix + """register""")
+)
+                      
+
+// @LINE:20
+def postedititem(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.postedititem(id), HandlerDef(this, "controllers.Application", "postedititem", Seq(classOf[Int]), "GET", """""", _prefix + """postedititem/$id<[^/]+>""")
 )
                       
 

@@ -4,12 +4,11 @@
 <html>
   <body>
     <h1> Edit </h1>
-      @helper.form(action = routes.Application.postedititem()) {
+      @helper.form(action = routes.Application.postedititem(1)) {
       @helper.inputText(userForm("commodityId"))
       @helper.inputText(userForm("commodityName"))
       @helper.inputText(userForm("price"))
       @helper.inputText(userForm("agio"))
-      @helper.inputDate(userForm("picture"))
       @helper.inputText(userForm("cType"))
       <input type="submit">
     }

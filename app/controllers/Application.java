@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.io.File;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
+import java.util.Map;
 
 public class Application extends Controller {
 
@@ -83,34 +84,50 @@ public class Application extends Controller {
                 Commodity commodity = Commodity.findById(id);
                 Form<Commodity> userForm = Form.form(Commodity.class).fill(commodity);
                 return ok(views.html.edititem.render(userForm));
+                //return ok("asd");
             }
         }
         return redirect("/login");
     }
     
     public static Result postitem() {                 //添加商品
-        
+        /*
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
         Shelves shelve =  userForm.get();
-        Commodity commodity = new Commodity(shelve.commodityName,shelve.price,shelve.agio,shelve.picture,shelve.cType,session("user"));
+        */
+        MultipartFormData body = request().body().asMultipartFormData();
+        Map<String,String[]>  map = body.asFormUrlEncoded();
+        //System.out.println(map.get("commodityName")[0]);
+
+        Commodity commodity = Commodity.chageByMap(map,session("user"));
         commodity.save();
+        FilePart picture = body.getFile("picture");
+        if (picture != null) {
+            String contentType = picture.getContentType(); 
+            File file   = picture.getFile();
+            File root = Play.application().path();
+            file.renameTo(new File(root, "/public/uploads/commodity_" + commodity.commodityId));
+        }
         return ok("添加成功");
     }
     
-    public static Result postedititem() {                    //修改商品
+    public static Result postedititem(int id) {                    //修改商品
+    /*
         Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
-        Shelves shelve =  userForm.get();
-        if(User.isseller(session("user")) && Commodity.isbelong(session("user"),shelve.commodityId)){ 
-            Commodity commodity = Commodity.findById(shelve.commodityId);
-            commodity.commodityName = shelve.commodityName;
-            commodity.price = shelve.price;
-            commodity.agio = shelve.agio;
-            commodity.picture = shelve.picture;
-            commodity.cType = shelve.cType;
+        Shelves shelve =  userForm.get();*/
+        MultipartFormData body = request().body().asMultipartFormData();
+        Commodity keymap = Commodity.chageByMap(body.asFormUrlEncoded(),"");
+        if(User.isseller(session("user")) && Commodity.isbelong(session("user"),id)){ 
+            Commodity commodity = Commodity.findById(id);
+            commodity.commodityName = keymap.commodityName;
+            commodity.price = keymap.price;
+            commodity.agio = keymap.agio;
+            commodity.cType = keymap.cType;
             commodity.save();
-            //return ok(views.html.additem.render(userForm));
             return ok("修改成功");
         }
+        
+        
         return redirect("/login");
     }
     
@@ -225,6 +242,8 @@ public class Application extends Controller {
     
     public static Result upload(int id) {                           //购买
           MultipartFormData body = request().body().asMultipartFormData();
+          Map<String,String[]>  map = body.asFormUrlEncoded();
+          System.out.println(map.get("asd")[0]);
           FilePart picture = body.getFile("picture");
           if (picture != null) {
             String contentType = picture.getContentType(); 

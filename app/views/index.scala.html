@@ -128,7 +128,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="grid-in">
 		    @for(line <- lines){
 			<div class="col-md-4 grid-top">
-				<a href="/item?id=@line.commodityId" class="b-link-stripe b-animate-go  thickbox"><img style="height:250px" class="img-responsive" src="@line.picture" alt="">
+				<a href="/item?id=@line.commodityId" class="b-link-stripe b-animate-go  thickbox"><img style="height:250px" class="img-responsive" src="@routes.Assets.at("uploads/commodity_")@line.commodityId" alt="">
 							<div class="b-wrapper">
 									<h3 class="b-animate b-from-left    b-delay03 ">
 										<span>@line.commodityName</span>

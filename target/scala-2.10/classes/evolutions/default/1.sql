@@ -43,7 +43,6 @@ create table commodity (
   commodity_name            varchar(255),
   price                     double,
   agio                      double,
-  picture                   varchar(255),
   c_type                    varchar(255),
   user                      varchar(255),
   time                      datetime,

@@ -15,9 +15,9 @@ POST     /login                     controllers.Application.postlogin()
 
 GET     /item                       controllers.Application.item(id: Int ?= 0)
 
-GET     /edititem                   controllers.Application.edititem(id: Int ?= 0)
+GET     /edititem                  controllers.Application.edititem(id: Int ?= 0)
 
-GET     /postedititem               controllers.Application.postedititem()
+GET     /postedititem/:id                controllers.Application.postedititem(id: Int)
 
 GET     /delitem                    controllers.Application.delitem(id: Int)
 

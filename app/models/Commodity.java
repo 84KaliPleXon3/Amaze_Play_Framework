@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 import java.util.Date;
+import java.util.Map;
 
 @Entity
 public class Commodity extends Model {
@@ -17,16 +18,14 @@ public class Commodity extends Model {
     public String commodityName;
     public double price;
     public double agio;
-    public String picture;
     public String cType;
     public String user;
     public Date time;
     
-    public Commodity(String commodityName,double price,double agio,String picture,String cType,String user){
+    public Commodity(String commodityName,double price,double agio,String cType,String user){
         this.commodityName = commodityName;
         this.price = price;
         this.agio = agio;
-        this.picture = picture;
         this.cType = cType;
         this.user = user;
         this.time = new Date();
@@ -58,5 +57,8 @@ public class Commodity extends Model {
     public static List<Commodity> findNew () {                //返回属于某个商家的所有商品
         return find.where().orderBy("time, time desc").setMaxRows(6).findList();
     }
-
+    
+    public static Commodity chageByMap (Map<String,String[]>  map,String username) {
+        return new Commodity(map.get("commodityName")[0],Double.valueOf(map.get("price")[0]), Double.valueOf(map.get("agio")[0]),map.get("cType")[0],username);
+    }
 }

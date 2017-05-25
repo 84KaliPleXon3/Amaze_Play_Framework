@@ -11,7 +11,5 @@ public class Shelves {
     @Required
     public double agio;
     @Required
-    public String picture;
-    @Required
     public String cType;
 }
