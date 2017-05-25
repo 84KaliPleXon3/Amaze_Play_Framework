@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:03ae7dd1fd184fdcb9751c004d878e878cd37669
-// @DATE:Thu May 25 16:37:54 HKT 2017
+// @HASH:61e394c9bf562f9c6b2a6d57faabbf984bdd8244
+// @DATE:Thu May 25 19:59:53 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,7 +13,8 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:53
+// @LINE:55
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -37,11 +38,11 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:53
+// @LINE:55
 class ReverseAssets {
     
 
-// @LINE:53
+// @LINE:55
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -50,6 +51,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -152,6 +154,12 @@ def register(): Call = {
 }
                                                 
 
+// @LINE:48
+def buy(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "buy")
+}
+                                                
+
 // @LINE:24
 def postitem(): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "item")
@@ -206,7 +214,8 @@ def delitem(id:Int): Call = {
                   
 
 
-// @LINE:53
+// @LINE:55
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -230,11 +239,11 @@ def delitem(id:Int): Call = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:53
+// @LINE:55
 class ReverseAssets {
     
 
-// @LINE:53
+// @LINE:55
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -248,6 +257,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -415,6 +425,17 @@ def register : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
+// @LINE:48
+def buy : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.buy",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "buy"})
+      }
+   """
+)
+                        
+
 // @LINE:24
 def postitem : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.postitem",
@@ -509,7 +530,8 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:53
+// @LINE:55
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -534,11 +556,11 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:53
+// @LINE:55
 class ReverseAssets {
     
 
-// @LINE:53
+// @LINE:55
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -547,6 +569,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:48
 // @LINE:46
 // @LINE:44
 // @LINE:42
@@ -646,6 +669,12 @@ def editissue(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:8
 def register(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.register(), HandlerDef(this, "controllers.Application", "register", Seq(), "GET", """""", _prefix + """register""")
+)
+                      
+
+// @LINE:48
+def buy(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.buy(), HandlerDef(this, "controllers.Application", "buy", Seq(), "GET", """""", _prefix + """buy""")
 )
                       
 

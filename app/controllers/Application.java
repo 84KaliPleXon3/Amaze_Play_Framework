@@ -9,7 +9,7 @@ import util.*;
 
 import play.data.Form;
 import java.util.List;
-
+import java.util.ArrayList;
 public class Application extends Controller {
 
     public static Result index() {
@@ -165,7 +165,7 @@ public class Application extends Controller {
        //if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
             Comment comment  = new Comment(discuss.commodityId, session("user"),discuss.content);
             comment.save();
-            return ok("评论发表成功");
+            return ok("success");
        // }
        // return redirect("/login");
     }
@@ -174,14 +174,22 @@ public class Application extends Controller {
         if(!User.iscustomer(session("user")))              //不是顾客或没登录
             return redirect("/login");
         Cart.addCart(id, num, session("user"));
-        return ok("添加到购物车成功");
+        return ok("success");
     }
     
     public static Result cart() {                           //获取购物车里的商品
         if(!User.iscustomer(session("user")))              //不是顾客或没登录
             return redirect("/login");
         List<Cart> cart = Cart.findByUser(session("user"));
-        return ok(views.html.cart.render());
+        List<Commodity> commoditys = new ArrayList<Commodity>();
+        double money = 0;
+        for (int i=0; i<cart.size(); i++) {
+            Cart item = cart.get(i);
+            Commodity commodity = Commodity.findById(item.commodityId);
+            commoditys.add(commodity);
+            money += commodity.price * commodity.agio * item.number;
+        }
+        return ok(views.html.cart.render(cart,commoditys,money));
     }
     
     public static Result delcart(int id) {                           //删除购物车特定商品
@@ -204,4 +212,10 @@ public class Application extends Controller {
         return ok(views.html.contact.render());
     }
 
+    public static Result buy() {                           //购买
+        if(!User.iscustomer(session("user")))              //不是顾客或没登录
+            return redirect("/login");
+        Cart.buyAll(session("user"));
+        return ok("购买成功");
+    }
 }

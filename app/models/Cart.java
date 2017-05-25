@@ -36,6 +36,7 @@ public class Cart extends Model {
             double money = commodity.price * commodity.agio * item.number;
             Bill bill = new Bill(item.commodityId,item.number,money,item.user);
             bill.save();
+            item.delete();
         }
     }
     

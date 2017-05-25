@@ -45,6 +45,8 @@ GET     /admin                      controllers.Application.admin()
 
 GET     /blog_single                controllers.Application.editissue()
 
+GET     /buy                        controllers.Application.buy()
+
 #GET     /shopAdmin                  controllers.Application.shopAdmin()
 
 #GET     /contact                    controllers.Application.contact()

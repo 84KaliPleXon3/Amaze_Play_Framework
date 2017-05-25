@@ -261,8 +261,8 @@ $(window).load(function() {
 								<span class="women1">: CK09</span></li>
 							</ul>
 
-							数量：<input type="text" value="1">
-								<a href="#" class="add-cart item_add">加入购物车</a>
+							数量：<input id="number" type="text" value="1">
+								<a id="addcart" href="#" class="add-cart item_add">加入购物车</a>
 
 						</div>
 					</div>
@@ -348,7 +348,29 @@ $(window).load(function() {
 					type:"post",
 					data:data,
 					success:function (data) {
+					    if(data=="success")
+					        location.reload() 
+					}
+			})
+		})
 
+
+	})
+	$(document).ready(function () {
+		$("#addcart").click(function () {
+			var title = $("#title").val();
+			var content = $("#number").val();
+			var data = {
+				"id":title,
+				"num":content
+			}
+			$.ajax({
+					url:"/addcart",
+					type:"get",
+					data:data,
+					success:function (data) {
+                        if(data=="success")
+                            alert("添加成功");
 					}
 			})
 		})
