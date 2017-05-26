@@ -63,7 +63,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active grid"><a class="color8" href="/">主页</a></li>
 
 				  <li><a class="color4" href="/blog">帖子</a></li>
-				  <li><a class="color6" href="/@if(current_user=="admin[管理员]"){admin}else{business}">个人中心</a></li>
+				  @if(current_user.indexOf("商家") != -1 || current_user.indexOf("管理员") != -1){
+				  <li><a class="color6" href="/@if(current_user.indexOf("管理员") == -1){business}else{admin}">个人中心</a></li>
+				  }else{}
 			  </ul>
 			</div>
 
