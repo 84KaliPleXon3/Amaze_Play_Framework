@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:2c0e8d269c8917040f520e28288b0bdb66fb2187
-// @DATE:Thu May 25 23:08:23 HKT 2017
+// @HASH:edfda2a0d945af3628bd6db2fe0779fbe6eb5b25
+// @DATE:Fri May 26 11:49:34 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -14,6 +14,7 @@ import Router.queryString
 
 
 // @LINE:59
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -52,6 +53,7 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -144,6 +146,12 @@ def upload(id:Int): Call = {
 }
                                                 
 
+// @LINE:56
+def deluser(username:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "deluser" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("username", username)))))
+}
+                                                
+
 // @LINE:46
 def editissue(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "blog_single")
@@ -223,6 +231,7 @@ def delitem(id:Int): Call = {
 
 
 // @LINE:59
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -266,6 +275,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -413,6 +423,17 @@ def upload : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
+// @LINE:56
+def deluser : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.deluser",
+   """
+      function(username) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "deluser" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("username", username)])})
+      }
+   """
+)
+                        
+
 // @LINE:46
 def editissue : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.editissue",
@@ -552,6 +573,7 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
 
 
 // @LINE:59
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -591,6 +613,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:56
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -680,6 +703,12 @@ def pass(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 // @LINE:50
 def upload(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.upload(id), HandlerDef(this, "controllers.Application", "upload", Seq(classOf[Int]), "POST", """""", _prefix + """upload/$id<[^/]+>""")
+)
+                      
+
+// @LINE:56
+def deluser(username:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.deluser(username), HandlerDef(this, "controllers.Application", "deluser", Seq(classOf[String]), "GET", """""", _prefix + """deluser""")
 )
                       
 

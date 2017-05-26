@@ -53,7 +53,7 @@ POST    /upload/:id			 		controllers.Application.upload(id:Int)
 
 #GET     /contact                    controllers.Application.contact()
 
-
+GET      /deluser                      controllers.Application.deluser(username: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

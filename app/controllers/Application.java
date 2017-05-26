@@ -50,7 +50,7 @@ public class Application extends Controller {
     public static Result postlogin() {
         Form<Login> userForm = Form.form(Login.class).bindFromRequest();
         if (userForm.hasErrors()) {
-            return badRequest("Wrong user/password");
+            return ok("Wrong user/password");
         } else {
             session().clear();
             session("user",userForm.get().username);
@@ -254,5 +254,12 @@ public class Application extends Controller {
           } else {
             return badRequest("not a valid file");    
           }
+    }
+    
+    public static Result deluser(String username) {                           //删除用户
+        //if(!User.isadmin(session("user")))        
+        //     return redirect("/login");
+        User.delByName(username);
+        return ok("删除成功");
     }
 }

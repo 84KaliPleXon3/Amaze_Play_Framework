@@ -11,6 +11,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 public class User extends Model {
+    @Id
+    public int id;
     public String username;
     public String password;
     public int powerid;
@@ -32,6 +34,12 @@ public class User extends Model {
     
     public static User findByName (String username) {
         return find.where().eq("username", username).findUnique();
+    }
+
+    public static void delByName (String username) {
+        User user = findByName(username);
+        if(user != null)
+            user.delete();
     }
     
     public static User authenticate(String username, String password) {
