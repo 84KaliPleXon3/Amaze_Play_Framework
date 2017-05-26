@@ -61,7 +61,7 @@ public class Commodity extends Model {
     }
     
     public static List<Commodity> findNew () {                //返回属于某个商家的所有商品
-        return find.where().orderBy("time, time desc").setMaxRows(6).findList();
+        return find.where().orderBy().desc("commodityId").setMaxRows(6).findList();
     }
     
     public static Commodity chageByMap (Map<String,String[]>  map,String username) {
