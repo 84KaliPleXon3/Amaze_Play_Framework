@@ -226,7 +226,7 @@
 											<tr>
 												<th>ID</th>
 												<th>Name</th>
-												<th>Amount</th>
+												<th>Description</th>
 												<th>Date &amp; Time</th>
 												<th>Status</th>
 											</tr>
@@ -234,9 +234,9 @@
 										<tbody>
 													@for(store <- stores) {
 														<tr>
-															<td><a href="#">@store.storename</a></td>
+															<td><a href="#">@store.StoreId</a></td>
+															<td>@store.storename</td>
 															<td>@store.description</td>
-															<td>$122</td>
 															<td>@store.time</td>
 															<td><span class="label label-success">COMPLETED</span></td>
 														</tr>

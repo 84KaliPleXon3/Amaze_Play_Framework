@@ -36,8 +36,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">
 					<ul>
-						<li ><a href="/login"  >@current_user</a></li>
-						<li><a  href="/register"  >注册</a></li>
+					@if(current_user=="登录"){<li ><a href="/login"  >登录</a></li><li><a  href="/register"  >注册</a></li>}else{<li ><a href="#"  >@current_user</a></li>}
+						
 
 					</ul>
 					<div class="cart box_1">
@@ -63,7 +63,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li class="active grid"><a class="color8" href="/">主页</a></li>
 
 				  <li><a class="color4" href="/blog">帖子</a></li>
-				  <li><a class="color6" href="/business">个人中心</a></li>
+				  <li><a class="color6" href="/@if(current_user=="admin[管理员]"){admin}else{business}">个人中心</a></li>
 			  </ul>
 			</div>
 
