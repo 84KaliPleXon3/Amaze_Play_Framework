@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:edfda2a0d945af3628bd6db2fe0779fbe6eb5b25
-// @DATE:Fri May 26 11:49:34 HKT 2017
+// @HASH:52b6b9c5abdc24732af39aed98fda46e1ce0245b
+// @DATE:Fri May 26 14:26:52 HKT 2017
 
 
 import play.core._
@@ -57,7 +57,7 @@ private[this] lazy val controllers_Application_edititem6 = Route("GET", PathPatt
         
 
 // @LINE:20
-private[this] lazy val controllers_Application_postedititem7 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("postedititem/"),DynamicPart("id", """[^/]+""",true))))
+private[this] lazy val controllers_Application_postedititem7 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("postedititem/"),DynamicPart("id", """[^/]+""",true))))
         
 
 // @LINE:22
@@ -117,17 +117,17 @@ private[this] lazy val controllers_Application_buy21 = Route("GET", PathPattern(
         
 
 // @LINE:50
-private[this] lazy val controllers_Application_upload22 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("upload/"),DynamicPart("id", """[^/]+""",true))))
+private[this] lazy val controllers_Application_deluser22 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("deluser"))))
         
 
-// @LINE:56
-private[this] lazy val controllers_Application_deluser23 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("deluser"))))
+// @LINE:52
+private[this] lazy val controllers_Application_delapply23 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("delapply"))))
         
 
-// @LINE:59
+// @LINE:57
 private[this] lazy val controllers_Assets_at24 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.register()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.postregister()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.postlogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.item(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """edititem""","""controllers.Application.edititem(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """postedititem/$id<[^/]+>""","""controllers.Application.postedititem(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delitem""","""controllers.Application.delitem(id:Int)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.postitem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog""","""controllers.Application.issue()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """issue""","""controllers.Application.postissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.business()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.postbusiness()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """discuss""","""controllers.Application.postdiscuss()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """pass""","""controllers.Application.pass(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """addcart""","""controllers.Application.addcart(id:Int, num:Int ?= 1)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """checkout""","""controllers.Application.cart()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delcart""","""controllers.Application.delcart(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin""","""controllers.Application.admin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog_single""","""controllers.Application.editissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """buy""","""controllers.Application.buy()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """upload/$id<[^/]+>""","""controllers.Application.upload(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """deluser""","""controllers.Application.deluser(username:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.register()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """register""","""controllers.Application.postregister()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.postlogin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.item(id:Int ?= 0)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """edititem""","""controllers.Application.edititem(id:Int ?= 0)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """postedititem/$id<[^/]+>""","""controllers.Application.postedititem(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delitem""","""controllers.Application.delitem(id:Int)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """item""","""controllers.Application.postitem()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog""","""controllers.Application.issue()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """issue""","""controllers.Application.postissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.business()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """business""","""controllers.Application.postbusiness()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """discuss""","""controllers.Application.postdiscuss()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """pass""","""controllers.Application.pass(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """addcart""","""controllers.Application.addcart(id:Int, num:Int ?= 1)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """checkout""","""controllers.Application.cart()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delcart""","""controllers.Application.delcart(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """admin""","""controllers.Application.admin()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """blog_single""","""controllers.Application.editissue()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """buy""","""controllers.Application.buy()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """deluser""","""controllers.Application.deluser(username:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """delapply""","""controllers.Application.delapply(id:Int)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -194,7 +194,7 @@ case controllers_Application_edititem6(params) => {
 // @LINE:20
 case controllers_Application_postedititem7(params) => {
    call(params.fromPath[Int]("id", None)) { (id) =>
-        invokeHandler(controllers.Application.postedititem(id), HandlerDef(this, "controllers.Application", "postedititem", Seq(classOf[Int]),"GET", """""", Routes.prefix + """postedititem/$id<[^/]+>"""))
+        invokeHandler(controllers.Application.postedititem(id), HandlerDef(this, "controllers.Application", "postedititem", Seq(classOf[Int]),"POST", """""", Routes.prefix + """postedititem/$id<[^/]+>"""))
    }
 }
         
@@ -312,22 +312,22 @@ case controllers_Application_buy21(params) => {
         
 
 // @LINE:50
-case controllers_Application_upload22(params) => {
-   call(params.fromPath[Int]("id", None)) { (id) =>
-        invokeHandler(controllers.Application.upload(id), HandlerDef(this, "controllers.Application", "upload", Seq(classOf[Int]),"POST", """""", Routes.prefix + """upload/$id<[^/]+>"""))
-   }
-}
-        
-
-// @LINE:56
-case controllers_Application_deluser23(params) => {
+case controllers_Application_deluser22(params) => {
    call(params.fromQuery[String]("username", None)) { (username) =>
         invokeHandler(controllers.Application.deluser(username), HandlerDef(this, "controllers.Application", "deluser", Seq(classOf[String]),"GET", """""", Routes.prefix + """deluser"""))
    }
 }
         
 
-// @LINE:59
+// @LINE:52
+case controllers_Application_delapply23(params) => {
+   call(params.fromQuery[Int]("id", None)) { (id) =>
+        invokeHandler(controllers.Application.delapply(id), HandlerDef(this, "controllers.Application", "delapply", Seq(classOf[Int]),"GET", """""", Routes.prefix + """delapply"""))
+   }
+}
+        
+
+// @LINE:57
 case controllers_Assets_at24(params) => {
    call(Param[String]("path", Right("/public")), params.fromPath[String]("file", None)) { (path, file) =>
         invokeHandler(controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]),"GET", """ Map static resources from the /public folder to the /assets URL path""", Routes.prefix + """assets/$file<.+>"""))

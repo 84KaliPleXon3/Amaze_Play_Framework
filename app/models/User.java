@@ -62,7 +62,6 @@ public class User extends Model {
     
     public static boolean isseller(String username) {
         User user = findByName(username);
-        //System.out.println(username);
         return username!=null && user.powerid == 2;
     }
     

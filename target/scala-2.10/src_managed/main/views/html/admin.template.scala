@@ -20,42 +20,43 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object admin extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
+object admin extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template3[List[User],List[Store],List[Checkstore],play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply():play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(users:List[User], stores:List[Store], checkstores:List[Checkstore]):play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*1.1*/("""<!doctype html>
+Seq[Any](format.raw/*1.70*/("""
+<!doctype html>
 <html lang="en">
 <head>
-	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>后台管理</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*9.32*/routes/*9.38*/.Assets.at("vendor/bootstrap/css/bootstrap.min.css"))),format.raw/*9.90*/("""">
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*10.32*/routes/*10.38*/.Assets.at("vendor/font-awesome/css/font-awesome.min.css"))),format.raw/*10.96*/("""">
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*11.32*/routes/*11.38*/.Assets.at("vendor/linearicons/style.css"))),format.raw/*11.80*/("""">
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*12.32*/routes/*12.38*/.Assets.at("vendor/chartist/css/chartist-custom.css"))),format.raw/*12.91*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*10.32*/routes/*10.38*/.Assets.at("vendor/bootstrap/css/bootstrap.min.css"))),format.raw/*10.90*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*11.32*/routes/*11.38*/.Assets.at("vendor/font-awesome/css/font-awesome.min.css"))),format.raw/*11.96*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*12.32*/routes/*12.38*/.Assets.at("vendor/linearicons/style.css"))),format.raw/*12.80*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*13.32*/routes/*13.38*/.Assets.at("vendor/chartist/css/chartist-custom.css"))),format.raw/*13.91*/("""">
 	<!-- MAIN CSS -->
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*14.32*/routes/*14.38*/.Assets.at("stylesheets/mainManage.css"))),format.raw/*14.78*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*15.32*/routes/*15.38*/.Assets.at("stylesheets/mainManage.css"))),format.raw/*15.78*/("""">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
-	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*16.32*/routes/*16.38*/.Assets.at("stylesheets/demo.css"))),format.raw/*16.72*/("""">
+	<link rel="stylesheet" href=""""),_display_(Seq[Any](/*17.32*/routes/*17.38*/.Assets.at("stylesheets/demo.css"))),format.raw/*17.72*/("""">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
-	<link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+	<link rel="apple-touch-icon" sizes="76x76" href=""""),_display_(Seq[Any](/*21.52*/routes/*21.58*/.Assets.at("images/apple-icon.png"))),format.raw/*21.93*/("""">
+	<link rel="icon" type="image/png" sizes="96x96" href=""""),_display_(Seq[Any](/*22.57*/routes/*22.63*/.Assets.at("images/favicon.png"))),format.raw/*22.95*/("""">
 </head>
 
 <body>
-	<!-- WRAPPER -->
+
 	<div id="wrapper">
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="index.html"><img src="assets/img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="/"><img src=""""),_display_(Seq[Any](/*31.28*/routes/*31.34*/.Assets.at("images/logo-dark.png"))),format.raw/*31.68*/("""" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -96,7 +97,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src=""""),_display_(Seq[Any](/*72.78*/routes/*72.84*/.Assets.at("images/user.png"))),format.raw/*72.113*/("""" class="img-circle" alt="Avatar"> <span>Samuel</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
 								<li><a href="#"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 								<li><a href="#"><i class="lnr lnr-envelope"></i> <span>Message</span></a></li>
@@ -117,24 +118,7 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="index.html" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
-						<li><a href="elements.html" class=""><i class="lnr lnr-code"></i> <span>Elements</span></a></li>
-						<li><a href="charts.html" class=""><i class="lnr lnr-chart-bars"></i> <span>Charts</span></a></li>
-						<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>Panels</span></a></li>
-						<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>Notifications</span></a></li>
-						<li>
-							<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
-							<div id="subPages" class="collapse ">
-								<ul class="nav">
-									<li><a href="page-profile.html" class="">Profile</a></li>
-									<li><a href="page-login.html" class="">Login</a></li>
-									<li><a href="page-lockscreen.html" class="">Lockscreen</a></li>
-								</ul>
-							</div>
-						</li>
-						<li><a href="tables.html" class=""><i class="lnr lnr-dice"></i> <span>Tables</span></a></li>
-						<li><a href="typography.html" class=""><i class="lnr lnr-text-format"></i> <span>Typography</span></a></li>
-						<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>Icons</span></a></li>
+						<li><a href="/admin" class="active"><i class="lnr lnr-home"></i> <span>后台管理</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -145,80 +129,14 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					<!-- OVERVIEW -->
-					<div class="panel panel-headline">
-						<div class="panel-heading">
-							<h3 class="panel-title">Weekly Overview</h3>
-							<p class="panel-subtitle">Period: Oct 14, 2016 - Oct 21, 2016</p>
-						</div>
-						<div class="panel-body">
-							<div class="row">
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-download"></i></span>
-										<p>
-											<span class="number">1,252</span>
-											<span class="title">Downloads</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-shopping-bag"></i></span>
-										<p>
-											<span class="number">203</span>
-											<span class="title">Sales</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-eye"></i></span>
-										<p>
-											<span class="number">274,678</span>
-											<span class="title">Visits</span>
-										</p>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="metric">
-										<span class="icon"><i class="fa fa-bar-chart"></i></span>
-										<p>
-											<span class="number">35%</span>
-											<span class="title">Conversions</span>
-										</p>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-9">
-									<div id="headline-chart" class="ct-chart"></div>
-								</div>
-								<div class="col-md-3">
-									<div class="weekly-summary text-right">
-										<span class="number">2,315</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 12%</span>
-										<span class="info-label">Total Sales</span>
-									</div>
-									<div class="weekly-summary text-right">
-										<span class="number">$5,758</span> <span class="percentage"><i class="fa fa-caret-up text-success"></i> 23%</span>
-										<span class="info-label">Monthly Income</span>
-									</div>
-									<div class="weekly-summary text-right">
-										<span class="number">$65,938</span> <span class="percentage"><i class="fa fa-caret-down text-danger"></i> 8%</span>
-										<span class="info-label">Total Income</span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- END OVERVIEW -->
-                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<!-- RECENT PURCHASES -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">Recent Purchases</h3>
+									<h3 class="panel-title">店铺申请</h3>
+
+
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
@@ -228,49 +146,26 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Order No.</th>
-												<th>Name</th>
-												<th>Amount</th>
-												<th>Date &amp; Time</th>
-												<th>Status</th>
+												<th>ID</th>
+												<th>申请人</th>
+												<th>商店名</th>
+												<th>店铺描述</th>
+												<th>操作</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
-												<td>Oct 18, 2016</td>
-												<td><span class="label label-danger">FAILED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
-												<td>Oct 17, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
-												<td>Oct 16, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
+											"""),_display_(Seq[Any](/*129.13*/for(checkstore <- checkstores) yield /*129.43*/ {_display_(Seq[Any](format.raw/*129.45*/("""
+												<tr>
+													<td><a href="#">"""),_display_(Seq[Any](/*131.31*/checkstore/*131.41*/.checkId)),format.raw/*131.49*/("""</a></td>
+													<td>"""),_display_(Seq[Any](/*132.19*/checkstore/*132.29*/.storename)),format.raw/*132.39*/("""</td>
+													<td>"""),_display_(Seq[Any](/*133.19*/checkstore/*133.29*/.user)),format.raw/*133.34*/("""</td>
+													<td>"""),_display_(Seq[Any](/*134.19*/checkstore/*134.29*/.description)),format.raw/*134.41*/("""</td>
+													<td>
+														<a href="/pass?id="""),_display_(Seq[Any](/*136.34*/checkstore/*136.44*/.checkId)),format.raw/*136.52*/("""" type="button">通过</a>
+														<a href="/delapply?id="""),_display_(Seq[Any](/*137.38*/checkstore/*137.48*/.checkId)),format.raw/*137.56*/("""" type="button">删除</a>
+													</td>
+												</tr>
+											""")))})),format.raw/*140.13*/("""
 										</tbody>
 									</table>
 								</div>
@@ -283,229 +178,119 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 							</div>
 							<!-- END RECENT PURCHASES -->
 						</div>
-						<div class="col-md-6">
-							<!-- MULTI CHARTS -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Projection vs. Realization</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="visits-trends-chart" class="ct-chart"></div>
-								</div>
-							</div>
-							<!-- END MULTI CHARTS -->
-						</div>
+
 					</div>
+				</div>
+			</div>
+
+
+			<div class="main-content">
+				<div class="container-fluid">
 					<div class="row">
-						<div class="col-md-7">
-							<!-- TODO LIST -->
+						<div class="col-md-12">
+							<!-- RECENT PURCHASES -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h3 class="panel-title">To-Do List</h3>
+									<h3 class="panel-title">所有用户</h3><br>
+									<p>(类型1为会员，2为商家，3为管理员)</p>
 									<div class="right">
 										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
 										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
 									</div>
 								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled todo-list">
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Restart Server</span>
-												<span class="short-description">Dynamically integrate client-centric technologies without cooperative resources.</span>
-												<span class="date">Oct 9, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<span class="title">Retest Upload Scenario</span>
-												<span class="short-description">Compellingly implement clicks-and-mortar relationships without highly efficient metrics.</span>
-												<span class="date">Oct 23, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-										<li>
-											<label class="control-inline fancy-checkbox">
-												<input type="checkbox"><span></span>
-											</label>
-											<p>
-												<strong>Functional Spec Meeting</strong>
-												<span class="short-description">Monotonectally formulate client-focused core competencies after parallel web-readiness.</span>
-												<span class="date">Oct 11, 2016</span>
-											</p>
-											<div class="controls">
-												<a href="#"><i class="icon-software icon-software-pencil"></i></a> <a href="#"><i class="icon-arrows icon-arrows-circle-remove"></i></a>
-											</div>
-										</li>
-									</ul>
+								<div class="panel-body no-padding">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>用户名</th>
+												<th>类型</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											"""),_display_(Seq[Any](/*183.13*/for(user <- users) yield /*183.31*/ {_display_(Seq[Any](format.raw/*183.33*/("""
+												<tr>
+													<td><a href="#">"""),_display_(Seq[Any](/*185.31*/user/*185.35*/.username)),format.raw/*185.44*/("""</a></td>
+													<td>"""),_display_(Seq[Any](/*186.19*/user/*186.23*/.powerid)),format.raw/*186.31*/("""</td>
+													<td>
+														<a href="/deluser?username="""),_display_(Seq[Any](/*188.43*/user/*188.47*/.username)),format.raw/*188.56*/("""" type="button">删除</a>
+													</td>
+												</tr>
+											""")))})),format.raw/*191.13*/("""
+										</tbody>
+									</table>
 								</div>
-							</div>
-							<!-- END TODO LIST -->
-						</div>
-						<div class="col-md-5">
-							<!-- TIMELINE -->
-							<div class="panel panel-scrolling">
-								<div class="panel-heading">
-									<h3 class="panel-title">Recent User Activity</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+								<div class="panel-footer">
+									<div class="row">
+										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
 									</div>
 								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled activity-list">
-										<li>
-											<img src="assets/img/user1.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Michael</a> has achieved 80% of his completed tasks <span class="timestamp">20 minutes ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user2.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Daniel</a> has been added as a team member to project <a href="#">System Update</a> <span class="timestamp">Yesterday</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user3.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Martha</a> created a new heatmap view <a href="#">Landing Page</a> <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user4.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jane</a> has completed all of the tasks <span class="timestamp">2 days ago</span></p>
-										</li>
-										<li>
-											<img src="assets/img/user5.png" alt="Avatar" class="img-circle pull-left avatar">
-											<p><a href="#">Jason</a> started a discussion about <a href="#">Weekly Meeting</a> <span class="timestamp">3 days ago</span></p>
-										</li>
-									</ul>
-									<button type="button" class="btn btn-primary btn-bottom center-block">Load More</button>
-								</div>
 							</div>
-							<!-- END TIMELINE -->
+							<!-- END RECENT PURCHASES -->
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-4">
-							<!-- TASKS -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">My Tasks</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<ul class="list-unstyled task-list">
-										<li>
-											<p>Updating Users Settings <span class="label-percent">23%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" style="width:23%">
-													<span class="sr-only">23% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Load &amp; Stress Test <span class="label-percent">80%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-													<span class="sr-only">80% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Data Duplication Check <span class="label-percent">100%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-													<span class="sr-only">Success</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Server Check <span class="label-percent">45%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-													<span class="sr-only">45% Complete</span>
-												</div>
-											</div>
-										</li>
-										<li>
-											<p>Mobile App Development <span class="label-percent">10%</span></p>
-											<div class="progress progress-xs">
-												<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
-													<span class="sr-only">10% Complete</span>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<!-- END TASKS -->
-						</div>
-						<div class="col-md-4">
-							<!-- VISIT CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">Website Visits</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="visits-chart" class="ct-chart"></div>
-								</div>
-							</div>
-							<!-- END VISIT CHART -->
-						</div>
-						<div class="col-md-4">
-							<!-- REALTIME CHART -->
-							<div class="panel">
-								<div class="panel-heading">
-									<h3 class="panel-title">System Load</h3>
-									<div class="right">
-										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
-										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
-									</div>
-								</div>
-								<div class="panel-body">
-									<div id="system-load" class="easy-pie-chart" data-percent="70">
-										<span class="percent">70</span>
-									</div>
-									<h4>CPU Load</h4>
-									<ul class="list-unstyled list-justify">
-										<li>High: <span>95%</span></li>
-										<li>Average: <span>87%</span></li>
-										<li>Low: <span>20%</span></li>
-										<li>Threads: <span>996</span></li>
-										<li>Processes: <span>259</span></li>
-									</ul>
-								</div>
-							</div>
-							<!-- END REALTIME CHART -->
-						</div>
+
 					</div>
 				</div>
 			</div>
 			<!-- END MAIN CONTENT -->
+
+			<div class="main-content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<!-- RECENT PURCHASES -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h3 class="panel-title">所有店铺</h3>
+									<div class="right">
+										<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+										<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+									</div>
+								</div>
+								<div class="panel-body no-padding">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Name</th>
+												<th>Amount</th>
+												<th>Date &amp; Time</th>
+												<th>Status</th>
+											</tr>
+										</thead>
+										<tbody>
+													"""),_display_(Seq[Any](/*235.15*/for(store <- stores) yield /*235.35*/ {_display_(Seq[Any](format.raw/*235.37*/("""
+														<tr>
+															<td><a href="#">"""),_display_(Seq[Any](/*237.33*/store/*237.38*/.storename)),format.raw/*237.48*/("""</a></td>
+															<td>"""),_display_(Seq[Any](/*238.21*/store/*238.26*/.description)),format.raw/*238.38*/("""</td>
+															<td>$122</td>
+															<td>"""),_display_(Seq[Any](/*240.21*/store/*240.26*/.time)),format.raw/*240.31*/("""</td>
+															<td><span class="label label-success">COMPLETED</span></td>
+														</tr>
+													""")))})),format.raw/*243.15*/("""
+										</tbody>
+									</table>
+								</div>
+								<div class="panel-footer">
+									<div class="row">
+										<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i> Last 24 hours</span></div>
+										<div class="col-md-6 text-right"><a href="#" class="btn btn-primary">View All Purchases</a></div>
+									</div>
+								</div>
+							</div>
+							<!-- END RECENT PURCHASES -->
+						</div>
+
+					</div>
+				</div>
+			</div>
 		</div>
 		<!-- END MAIN -->
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; 2017 <a href="#" target="_blank">Theme I Need</a>. All Rights Reserved. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+				<p class="copyright">&copy; 2017</p>
 			</div>
 		</footer>
 	</div>
@@ -517,144 +302,26 @@ Seq[Any](format.raw/*1.1*/("""<!doctype html>
 	<script src="assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="assets/scripts/klorofil-common.js"></script>
-	<script>
-	$(function() """),format.raw/*493.15*/("""{"""),format.raw/*493.16*/("""
-		var data, options;
-
-		// headline charts
-		data = """),format.raw/*497.10*/("""{"""),format.raw/*497.11*/("""
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[23, 29, 24, 40, 25, 24, 35],
-				[14, 25, 18, 34, 29, 38, 44],
-			]
-		"""),format.raw/*503.3*/("""}"""),format.raw/*503.4*/(""";
-
-		options = """),format.raw/*505.13*/("""{"""),format.raw/*505.14*/("""
-			height: 300,
-			showArea: true,
-			showLine: false,
-			showPoint: false,
-			fullWidth: true,
-			axisX: """),format.raw/*511.11*/("""{"""),format.raw/*511.12*/("""
-				showGrid: false
-			"""),format.raw/*513.4*/("""}"""),format.raw/*513.5*/(""",
-			lineSmooth: false,
-		"""),format.raw/*515.3*/("""}"""),format.raw/*515.4*/(""";
-
-		new Chartist.Line('#headline-chart', data, options);
-
-
-		// visits trend charts
-		data = """),format.raw/*521.10*/("""{"""),format.raw/*521.11*/("""
-			labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-			series: ["""),format.raw/*523.13*/("""{"""),format.raw/*523.14*/("""
-				name: 'series-real',
-				data: [200, 380, 350, 320, 410, 450, 570, 400, 555, 620, 750, 900],
-			"""),format.raw/*526.4*/("""}"""),format.raw/*526.5*/(""", """),format.raw/*526.7*/("""{"""),format.raw/*526.8*/("""
-				name: 'series-projection',
-				data: [240, 350, 360, 380, 400, 450, 480, 523, 555, 600, 700, 800],
-			"""),format.raw/*529.4*/("""}"""),format.raw/*529.5*/("""]
-		"""),format.raw/*530.3*/("""}"""),format.raw/*530.4*/(""";
-
-		options = """),format.raw/*532.13*/("""{"""),format.raw/*532.14*/("""
-			fullWidth: true,
-			lineSmooth: false,
-			height: "270px",
-			low: 0,
-			high: 'auto',
-			series: """),format.raw/*538.12*/("""{"""),format.raw/*538.13*/("""
-				'series-projection': """),format.raw/*539.26*/("""{"""),format.raw/*539.27*/("""
-					showArea: true,
-					showPoint: false,
-					showLine: false
-				"""),format.raw/*543.5*/("""}"""),format.raw/*543.6*/(""",
-			"""),format.raw/*544.4*/("""}"""),format.raw/*544.5*/(""",
-			axisX: """),format.raw/*545.11*/("""{"""),format.raw/*545.12*/("""
-				showGrid: false,
-
-			"""),format.raw/*548.4*/("""}"""),format.raw/*548.5*/(""",
-			axisY: """),format.raw/*549.11*/("""{"""),format.raw/*549.12*/("""
-				showGrid: false,
-				onlyInteger: true,
-				offset: 0,
-			"""),format.raw/*553.4*/("""}"""),format.raw/*553.5*/(""",
-			chartPadding: """),format.raw/*554.18*/("""{"""),format.raw/*554.19*/("""
-				left: 20,
-				right: 20
-			"""),format.raw/*557.4*/("""}"""),format.raw/*557.5*/("""
-		"""),format.raw/*558.3*/("""}"""),format.raw/*558.4*/(""";
-
-		new Chartist.Line('#visits-trends-chart', data, options);
-
-
-		// visits chart
-		data = """),format.raw/*564.10*/("""{"""),format.raw/*564.11*/("""
-			labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-			series: [
-				[6384, 6342, 5437, 2764, 3958, 5068, 7654]
-			]
-		"""),format.raw/*569.3*/("""}"""),format.raw/*569.4*/(""";
-
-		options = """),format.raw/*571.13*/("""{"""),format.raw/*571.14*/("""
-			height: 300,
-			axisX: """),format.raw/*573.11*/("""{"""),format.raw/*573.12*/("""
-				showGrid: false
-			"""),format.raw/*575.4*/("""}"""),format.raw/*575.5*/(""",
-		"""),format.raw/*576.3*/("""}"""),format.raw/*576.4*/(""";
-
-		new Chartist.Bar('#visits-chart', data, options);
-
-
-		// real-time pie chart
-		var sysLoad = $('#system-load').easyPieChart("""),format.raw/*582.48*/("""{"""),format.raw/*582.49*/("""
-			size: 130,
-			barColor: function(percent) """),format.raw/*584.32*/("""{"""),format.raw/*584.33*/("""
-				return "rgb(" + Math.round(200 * percent / 100) + ", " + Math.round(200 * (1.1 - percent / 100)) + ", 0)";
-			"""),format.raw/*586.4*/("""}"""),format.raw/*586.5*/(""",
-			trackColor: 'rgba(245, 245, 245, 0.8)',
-			scaleColor: false,
-			lineWidth: 5,
-			lineCap: "square",
-			animate: 800
-		"""),format.raw/*592.3*/("""}"""),format.raw/*592.4*/(""");
-
-		var updateInterval = 3000; // in milliseconds
-
-		setInterval(function() """),format.raw/*596.26*/("""{"""),format.raw/*596.27*/("""
-			var randomVal;
-			randomVal = getRandomInt(0, 100);
-
-			sysLoad.data('easyPieChart').update(randomVal);
-			sysLoad.find('.percent').text(randomVal);
-		"""),format.raw/*602.3*/("""}"""),format.raw/*602.4*/(""", updateInterval);
-
-		function getRandomInt(min, max) """),format.raw/*604.35*/("""{"""),format.raw/*604.36*/("""
-			return Math.floor(Math.random() * (max - min + 1)) + min;
-		"""),format.raw/*606.3*/("""}"""),format.raw/*606.4*/("""
-
-	"""),format.raw/*608.2*/("""}"""),format.raw/*608.3*/(""");
-	</script>
 </body>
 
 </html>
 """))}
     }
     
-    def render(): play.api.templates.HtmlFormat.Appendable = apply()
+    def render(users:List[User],stores:List[Store],checkstores:List[Checkstore]): play.api.templates.HtmlFormat.Appendable = apply(users,stores,checkstores)
     
-    def f:(() => play.api.templates.HtmlFormat.Appendable) = () => apply()
+    def f:((List[User],List[Store],List[Checkstore]) => play.api.templates.HtmlFormat.Appendable) = (users,stores,checkstores) => apply(users,stores,checkstores)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu May 25 15:33:29 HKT 2017
+                    DATE: Fri May 26 15:08:18 HKT 2017
                     SOURCE: /root/Downloads/amaze/app/views/admin.scala.html
-                    HASH: 9056efe48c7ea77acb18d01f16e8eb360283b443
-                    MATRIX: 855->0|1259->369|1273->375|1346->427|1417->462|1432->468|1512->526|1583->561|1598->567|1662->609|1733->644|1748->650|1823->703|1914->758|1929->764|1991->804|2136->913|2151->919|2207->953|23417->22134|23447->22135|23533->22192|23563->22193|23748->22350|23777->22351|23823->22368|23853->22369|23995->22482|24025->22483|24079->22509|24108->22510|24164->22538|24193->22539|24322->22639|24352->22640|24493->22752|24523->22753|24655->22857|24684->22858|24714->22860|24743->22861|24881->22971|24910->22972|24943->22977|24972->22978|25018->22995|25048->22996|25185->23104|25215->23105|25271->23132|25301->23133|25403->23207|25432->23208|25466->23214|25495->23215|25537->23228|25567->23229|25624->23258|25653->23259|25695->23272|25725->23273|25820->23340|25849->23341|25898->23361|25928->23362|25991->23397|26020->23398|26052->23402|26081->23403|26208->23501|26238->23502|26401->23637|26430->23638|26476->23655|26506->23656|26564->23685|26594->23686|26648->23712|26677->23713|26710->23718|26739->23719|26903->23854|26933->23855|27010->23903|27040->23904|27185->24021|27214->24022|27372->24152|27401->24153|27512->24235|27542->24236|27731->24397|27760->24398|27845->24454|27875->24455|27969->24521|27998->24522|28031->24527|28060->24528
-                    LINES: 29->1|37->9|37->9|37->9|38->10|38->10|38->10|39->11|39->11|39->11|40->12|40->12|40->12|42->14|42->14|42->14|44->16|44->16|44->16|521->493|521->493|525->497|525->497|531->503|531->503|533->505|533->505|539->511|539->511|541->513|541->513|543->515|543->515|549->521|549->521|551->523|551->523|554->526|554->526|554->526|554->526|557->529|557->529|558->530|558->530|560->532|560->532|566->538|566->538|567->539|567->539|571->543|571->543|572->544|572->544|573->545|573->545|576->548|576->548|577->549|577->549|581->553|581->553|582->554|582->554|585->557|585->557|586->558|586->558|592->564|592->564|597->569|597->569|599->571|599->571|601->573|601->573|603->575|603->575|604->576|604->576|610->582|610->582|612->584|612->584|614->586|614->586|620->592|620->592|624->596|624->596|630->602|630->602|632->604|632->604|634->606|634->606|636->608|636->608
+                    HASH: 2a683cf0935c9f1043c87efb10ba92830a4a8567
+                    MATRIX: 807->1|969->69|1324->388|1339->394|1413->446|1484->481|1499->487|1579->545|1650->580|1665->586|1729->628|1800->663|1815->669|1890->722|1981->777|1996->783|2058->823|2203->932|2218->938|2274->972|2511->1173|2526->1179|2583->1214|2679->1274|2694->1280|2748->1312|2956->1484|2971->1490|3027->1524|5555->4016|5570->4022|5622->4051|7761->6153|7808->6183|7849->6185|7936->6235|7956->6245|7987->6253|8053->6282|8073->6292|8106->6302|8168->6327|8188->6337|8216->6342|8278->6367|8298->6377|8333->6389|8429->6448|8449->6458|8480->6466|8578->6527|8598->6537|8629->6545|8737->6620|10097->7943|10132->7961|10173->7963|10260->8013|10274->8017|10306->8026|10372->8055|10386->8059|10417->8067|10522->8135|10536->8139|10568->8148|10676->8223|12097->9607|12134->9627|12175->9629|12266->9683|12281->9688|12314->9698|12382->9729|12397->9734|12432->9746|12526->9803|12541->9808|12569->9813|12720->9931
+                    LINES: 26->1|29->1|38->10|38->10|38->10|39->11|39->11|39->11|40->12|40->12|40->12|41->13|41->13|41->13|43->15|43->15|43->15|45->17|45->17|45->17|49->21|49->21|49->21|50->22|50->22|50->22|59->31|59->31|59->31|100->72|100->72|100->72|157->129|157->129|157->129|159->131|159->131|159->131|160->132|160->132|160->132|161->133|161->133|161->133|162->134|162->134|162->134|164->136|164->136|164->136|165->137|165->137|165->137|168->140|211->183|211->183|211->183|213->185|213->185|213->185|214->186|214->186|214->186|216->188|216->188|216->188|219->191|263->235|263->235|263->235|265->237|265->237|265->237|266->238|266->238|266->238|268->240|268->240|268->240|271->243
                     -- GENERATED --
                 */
             

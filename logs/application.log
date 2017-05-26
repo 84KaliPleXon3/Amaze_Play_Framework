@@ -1,27 +1,399 @@
-2017-05-26 12:34:46,818 - [INFO] - from play in pool-4-thread-5 
+2017-05-26 14:34:14,064 - [INFO] - from play in pool-4-thread-6 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2017-05-26 12:34:57,242 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:34:26,039 - [ERROR] - from application in New I/O worker #1 
+
+
+! @7460mcl1m - Internal server error, for (GET) [/] ->
+
+play.PlayExceptions$CompilationException: Compilation error[error: cannot find symbol]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:298) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:298) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:296) ~[na:na]
+	at scala.util.Either$LeftProjection.map(Either.scala:377) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1.reload(PlayReloader.scala:296) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:102) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
+
+2017-05-26 14:34:26,097 - [WARN] - from play in New I/O worker #1 
+No application found at invoker init
+
+2017-05-26 14:35:16,206 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-26 12:34:57,969 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:35:16,873 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2017-05-26 12:39:10,077 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:35:17,844 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-26 12:39:10,129 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:35:17,941 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2017-05-26 12:40:33,980 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:35:52,131 - [INFO] - from play in play-internal-execution-context-2 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-26 12:40:34,050 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:35:52,208 - [INFO] - from play in play-internal-execution-context-2 
 Application started (Dev)
 
-2017-05-26 12:41:25,429 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:37:14,896 - [INFO] - from play in play-internal-execution-context-2 
 database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
 
-2017-05-26 12:41:25,489 - [INFO] - from play in play-internal-execution-context-1 
+2017-05-26 14:37:14,971 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:40:11,258 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:40:11,327 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:43:20,525 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:43:20,588 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:43:30,378 - [ERROR] - from play in play-internal-execution-context-2 
+Cannot invoke the action, eventually got an error: java.lang.IllegalStateException: No value
+
+2017-05-26 14:43:30,387 - [ERROR] - from application in play-internal-execution-context-2 
+
+
+! @7460nhk91 - Internal server error, for (POST) [/discuss] ->
+
+play.api.Application$$anon$1: Execution exception[[IllegalStateException: No value]]
+	at play.api.Application$class.handleError(Application.scala:293) ~[play_2.10.jar:2.2.6]
+	at play.api.DefaultApplication.handleError(Application.scala:399) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at scala.Option.map(Option.scala:145) [scala-library.jar:na]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:264) [play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:344) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:343) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.api.libs.iteratee.Execution$$anon$1.execute(Execution.scala:43) [play-iteratees_2.10.jar:2.2.6]
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:40) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:248) [scala-library.jar:na]
+	at scala.concurrent.Promise$class.complete(Promise.scala:55) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:153) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
+Caused by: java.lang.IllegalStateException: No value
+	at play.libs.F$None.get(F.java:702) ~[play_2.10.jar:2.2.6]
+	at play.data.Form.get(Form.java:540) ~[play-java_2.10.jar:2.2.6]
+	at controllers.Application.postdiscuss(Application.java:178) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183) ~[play_2.10.jar:2.2.6]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37) ~[play_2.10.jar:2.2.6]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42) ~[akka-actor_2.10.jar:2.2.0]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) ~[akka-actor_2.10.jar:2.2.0]
+	... 4 common frames omitted
+
+2017-05-26 14:43:39,081 - [ERROR] - from play in play-internal-execution-context-2 
+Cannot invoke the action, eventually got an error: java.lang.IllegalStateException: No value
+
+2017-05-26 14:43:39,084 - [ERROR] - from application in play-internal-execution-context-2 
+
+
+! @7460ni75e - Internal server error, for (POST) [/discuss] ->
+
+play.api.Application$$anon$1: Execution exception[[IllegalStateException: No value]]
+	at play.api.Application$class.handleError(Application.scala:293) ~[play_2.10.jar:2.2.6]
+	at play.api.DefaultApplication.handleError(Application.scala:399) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at scala.Option.map(Option.scala:145) [scala-library.jar:na]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:264) [play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:344) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:343) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.api.libs.iteratee.Execution$$anon$1.execute(Execution.scala:43) [play-iteratees_2.10.jar:2.2.6]
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:40) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:248) [scala-library.jar:na]
+	at scala.concurrent.Promise$class.complete(Promise.scala:55) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:153) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
+Caused by: java.lang.IllegalStateException: No value
+	at play.libs.F$None.get(F.java:702) ~[play_2.10.jar:2.2.6]
+	at play.data.Form.get(Form.java:540) ~[play-java_2.10.jar:2.2.6]
+	at controllers.Application.postdiscuss(Application.java:178) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183) ~[play_2.10.jar:2.2.6]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37) ~[play_2.10.jar:2.2.6]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42) ~[akka-actor_2.10.jar:2.2.0]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) ~[akka-actor_2.10.jar:2.2.0]
+	... 4 common frames omitted
+
+2017-05-26 14:44:49,327 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:44:49,375 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:44:49,398 - [ERROR] - from play in play-internal-execution-context-2 
+Cannot invoke the action, eventually got an error: java.lang.IllegalStateException: No value
+
+2017-05-26 14:44:49,401 - [ERROR] - from application in play-internal-execution-context-2 
+
+
+! @7460nm761 - Internal server error, for (POST) [/discuss] ->
+
+play.api.Application$$anon$1: Execution exception[[IllegalStateException: No value]]
+	at play.api.Application$class.handleError(Application.scala:293) ~[play_2.10.jar:2.2.6]
+	at play.api.DefaultApplication.handleError(Application.scala:399) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3$$anonfun$applyOrElse$3.apply(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at scala.Option.map(Option.scala:145) [scala-library.jar:na]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:268) [play_2.10.jar:2.2.6]
+	at play.core.server.netty.PlayDefaultUpstreamHandler$$anonfun$3.applyOrElse(PlayDefaultUpstreamHandler.scala:264) [play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:344) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$recoverWith$1.apply(Future.scala:343) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.api.libs.iteratee.Execution$$anon$1.execute(Execution.scala:43) [play-iteratees_2.10.jar:2.2.6]
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:40) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:248) [scala-library.jar:na]
+	at scala.concurrent.Promise$class.complete(Promise.scala:55) [scala-library.jar:na]
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:153) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$map$1.apply(Future.scala:235) [scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) [scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) [scala-library.jar:na]
+Caused by: java.lang.IllegalStateException: No value
+	at play.libs.F$None.get(F.java:702) ~[play_2.10.jar:2.2.6]
+	at play.data.Form.get(Form.java:540) ~[play-java_2.10.jar:2.2.6]
+	at controllers.Application.postdiscuss(Application.java:178) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at Routes$$anonfun$routes$1$$anonfun$applyOrElse$15$$anonfun$apply$15.apply(routes_routing.scala:253) ~[na:na]
+	at play.core.Router$HandlerInvoker$$anon$7$$anon$2.invocation(Router.scala:183) ~[play_2.10.jar:2.2.6]
+	at play.core.Router$Routes$$anon$1.invocation(Router.scala:377) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$1.call(JavaAction.scala:56) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:91) ~[play_2.10.jar:2.2.6]
+	at play.core.j.JavaAction$$anon$3.apply(JavaAction.scala:90) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at play.core.j.FPromiseHelper$$anonfun$flatMap$1.apply(FPromiseHelper.scala:82) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:251) ~[scala-library.jar:na]
+	at scala.concurrent.Future$$anonfun$flatMap$1.apply(Future.scala:249) ~[scala-library.jar:na]
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:32) [scala-library.jar:na]
+	at play.core.j.HttpExecutionContext$$anon$2.run(HttpExecutionContext.scala:37) ~[play_2.10.jar:2.2.6]
+	at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:42) ~[akka-actor_2.10.jar:2.2.0]
+	at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:386) ~[akka-actor_2.10.jar:2.2.0]
+	... 4 common frames omitted
+
+2017-05-26 14:46:34,424 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:46:34,487 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:49:23,519 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:49:23,574 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:49:58,954 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:49:59,009 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:50:31,574 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:50:31,641 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:51:11,731 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:51:11,769 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:52:20,874 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:52:20,916 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:54:29,802 - [ERROR] - from application in New I/O worker #8 
+
+
+! @7460p37l4 - Internal server error, for (GET) [/checkout] ->
+
+play.PlayExceptions$CompilationException: Compilation error[value commodityId is not a member of java.util.List[models.Cart]]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:298) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:298) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:296) ~[na:na]
+	at scala.util.Either$LeftProjection.map(Either.scala:377) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1.reload(PlayReloader.scala:296) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:102) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
+
+2017-05-26 14:54:41,803 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:54:41,859 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:56:25,226 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:56:25,283 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:58:21,178 - [ERROR] - from application in New I/O worker #8 
+
+
+! @7460pgc24 - Internal server error, for (GET) [/checkout] ->
+
+play.PlayExceptions$CompilationException: Compilation error[not found: value commodity]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14$$anonfun$apply$16.apply(PlayReloader.scala:304) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:304) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2$$anonfun$apply$14.apply(PlayReloader.scala:298) ~[na:na]
+	at scala.Option.map(Option.scala:145) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:298) ~[na:na]
+	at play.PlayReloader$$anon$1$$anonfun$reload$2.apply(PlayReloader.scala:296) ~[na:na]
+	at scala.util.Either$LeftProjection.map(Either.scala:377) ~[scala-library.jar:na]
+	at play.PlayReloader$$anon$1.reload(PlayReloader.scala:296) ~[na:na]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:104) ~[play_2.10.jar:2.2.6]
+	at play.core.ReloadableApplication$$anonfun$get$1.apply(ApplicationProvider.scala:102) ~[play_2.10.jar:2.2.6]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask$AdaptedRunnableAction.exec(ForkJoinTask.java:1361) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979) ~[scala-library.jar:na]
+	at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107) ~[scala-library.jar:na]
+
+2017-05-26 14:58:35,493 - [INFO] - from play in play-internal-execution-context-2 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:58:35,549 - [INFO] - from play in play-internal-execution-context-2 
+Application started (Dev)
+
+2017-05-26 14:59:19,132 - [INFO] - from play in play-internal-execution-context-6 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 14:59:19,168 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2017-05-26 15:00:28,144 - [INFO] - from play in play-internal-execution-context-6 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:00:28,181 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2017-05-26 15:00:48,415 - [INFO] - from play in play-internal-execution-context-6 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:00:48,465 - [INFO] - from play in play-internal-execution-context-6 
+Application started (Dev)
+
+2017-05-26 15:05:08,517 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:05:08,567 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:05:27,675 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:05:27,726 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:06:25,403 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:06:25,432 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:07:48,508 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:07:48,561 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:08:05,135 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:08:05,196 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:08:18,959 - [INFO] - from play in play-internal-execution-context-8 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:08:18,990 - [INFO] - from play in play-internal-execution-context-8 
+Application started (Dev)
+
+2017-05-26 15:10:08,542 - [INFO] - from play in play-internal-execution-context-12 
+database [default] connected at jdbc:mysql://127.0.0.1:3306/amaze
+
+2017-05-26 15:10:08,601 - [INFO] - from play in play-internal-execution-context-12 
 Application started (Dev)
 

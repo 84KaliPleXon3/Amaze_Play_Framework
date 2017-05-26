@@ -17,7 +17,7 @@ GET     /item                       controllers.Application.item(id: Int ?= 0)
 
 GET     /edititem                  controllers.Application.edititem(id: Int ?= 0)
 
-GET     /postedititem/:id                controllers.Application.postedititem(id: Int)
+POST     /postedititem/:id                controllers.Application.postedititem(id: Int)
 
 GET     /delitem                    controllers.Application.delitem(id: Int)
 
@@ -47,13 +47,11 @@ GET     /blog_single                controllers.Application.editissue()
 
 GET     /buy                        controllers.Application.buy()
 
-POST    /upload/:id			 		controllers.Application.upload(id:Int)
-
-#GET     /shopAdmin                  controllers.Application.shopAdmin()
-
-#GET     /contact                    controllers.Application.contact()
-
 GET      /deluser                      controllers.Application.deluser(username: String)
+
+GET     /delapply                   controllers.Application.delapply(id: Int)
+
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

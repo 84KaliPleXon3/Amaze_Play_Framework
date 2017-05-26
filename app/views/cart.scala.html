@@ -86,6 +86,15 @@
                             $('#del@item.commodityId').on('click', function(c){
 	                            $('#cart-header@item.commodityId').fadeOut('slow', function(c){
 		                            $('#cart-header@item.commodityId').remove();
+		                            $('#deldetails@item.commodityId').remove();
+		                            			$.ajax({
+					                                url:"/delcart?id=@item.commodityId",
+					                                type:"get",
+					                                success:function (data) {
+                                                        if(data=="success")
+                                                            alert("添加成功");
+					                                }
+			                                })
 	                            });
                             });
                             });
@@ -94,7 +103,7 @@
 						<div id="del@item.commodityId" class="close1"> </div>
 						<div class="cart-sec simpleCart_shelfItem">
 							<div class="cart-item cyc">
-								<img src="@routes.Assets.at("images/pic1.jpg")" class="img-responsive" alt=""/>
+								<img src="@routes.Assets.at("uploads/commodity_")@item.commodityId" class="img-responsive" alt=""/>
 							</div>
 							<div class="cart-item-info">
 								<span>数量</span>
@@ -108,7 +117,7 @@
 				<div class="col-md-3 cart-total">
 
 					@for(commodity<-commoditys){
-					<div class="price-details">
+					<div class="price-details" id="deldetails@commodity.commodityId">
 						<h3>价格细节</h3>
 						<span>单价</span>
 						<span class="total1">@commodity.price</span>
@@ -141,6 +150,7 @@
 					type:"get",
 					success:function (data) {
                         alert(data);
+                        location.reload() 
 					}
 			})
 		})

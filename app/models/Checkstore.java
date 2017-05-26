@@ -30,9 +30,16 @@ public class Checkstore extends Model {
     
     public static void pass (int checkId) {             
         Checkstore check = find.ref(checkId);
-        Store store = new Store(check.storename,check.user,check.description);
-        store.save();
+        if(check != null){
+            Store store = new Store(check.storename,check.user,check.description);
+            store.save();
+            check.delete();
+        }
+    }
+    
+    public static void delapply (int checkId) {
+      Checkstore check = find.ref(checkId);
+      if(check !=null)
         check.delete();
     }
- 
 }

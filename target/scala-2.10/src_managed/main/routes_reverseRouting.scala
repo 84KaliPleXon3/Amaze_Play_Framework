@@ -1,6 +1,6 @@
 // @SOURCE:/root/Downloads/amaze/conf/routes
-// @HASH:edfda2a0d945af3628bd6db2fe0779fbe6eb5b25
-// @DATE:Fri May 26 11:49:34 HKT 2017
+// @HASH:52b6b9c5abdc24732af39aed98fda46e1ce0245b
+// @DATE:Fri May 26 14:26:52 HKT 2017
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,8 +13,8 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:59
-// @LINE:56
+// @LINE:57
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -40,11 +40,11 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:59
+// @LINE:57
 class ReverseAssets {
     
 
-// @LINE:59
+// @LINE:57
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -53,7 +53,7 @@ def at(file:String): Call = {
 }
                           
 
-// @LINE:56
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -141,14 +141,14 @@ def pass(id:Int): Call = {
                                                 
 
 // @LINE:50
-def upload(id:Int): Call = {
-   Call("POST", _prefix + { _defaultPrefix } + "upload/" + implicitly[PathBindable[Int]].unbind("id", id))
+def deluser(username:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "deluser" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("username", username)))))
 }
                                                 
 
-// @LINE:56
-def deluser(username:String): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "deluser" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("username", username)))))
+// @LINE:52
+def delapply(id:Int): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "delapply" + queryString(List(Some(implicitly[QueryStringBindable[Int]].unbind("id", id)))))
 }
                                                 
 
@@ -166,7 +166,7 @@ def register(): Call = {
 
 // @LINE:20
 def postedititem(id:Int): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "postedititem/" + implicitly[PathBindable[Int]].unbind("id", id))
+   Call("POST", _prefix + { _defaultPrefix } + "postedititem/" + implicitly[PathBindable[Int]].unbind("id", id))
 }
                                                 
 
@@ -230,8 +230,8 @@ def delitem(id:Int): Call = {
                   
 
 
-// @LINE:59
-// @LINE:56
+// @LINE:57
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -257,11 +257,11 @@ def delitem(id:Int): Call = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:59
+// @LINE:57
 class ReverseAssets {
     
 
-// @LINE:59
+// @LINE:57
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -275,7 +275,7 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
-// @LINE:56
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -413,22 +413,22 @@ def pass : JavascriptReverseRoute = JavascriptReverseRoute(
                         
 
 // @LINE:50
-def upload : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.upload",
-   """
-      function(id) {
-      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "upload/" + (""" + implicitly[PathBindable[Int]].javascriptUnbind + """)("id", id)})
-      }
-   """
-)
-                        
-
-// @LINE:56
 def deluser : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.deluser",
    """
       function(username) {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "deluser" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("username", username)])})
+      }
+   """
+)
+                        
+
+// @LINE:52
+def delapply : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.delapply",
+   """
+      function(id) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "delapply" + _qS([(""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("id", id)])})
       }
    """
 )
@@ -461,7 +461,7 @@ def postedititem : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Application.postedititem",
    """
       function(id) {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "postedititem/" + (""" + implicitly[PathBindable[Int]].javascriptUnbind + """)("id", id)})
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "postedititem/" + (""" + implicitly[PathBindable[Int]].javascriptUnbind + """)("id", id)})
       }
    """
 )
@@ -572,8 +572,8 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:59
-// @LINE:56
+// @LINE:57
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -600,11 +600,11 @@ def delitem : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:59
+// @LINE:57
 class ReverseAssets {
     
 
-// @LINE:59
+// @LINE:57
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -613,7 +613,7 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
-// @LINE:56
+// @LINE:52
 // @LINE:50
 // @LINE:48
 // @LINE:46
@@ -701,14 +701,14 @@ def pass(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
                       
 
 // @LINE:50
-def upload(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.upload(id), HandlerDef(this, "controllers.Application", "upload", Seq(classOf[Int]), "POST", """""", _prefix + """upload/$id<[^/]+>""")
+def deluser(username:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.deluser(username), HandlerDef(this, "controllers.Application", "deluser", Seq(classOf[String]), "GET", """""", _prefix + """deluser""")
 )
                       
 
-// @LINE:56
-def deluser(username:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.deluser(username), HandlerDef(this, "controllers.Application", "deluser", Seq(classOf[String]), "GET", """""", _prefix + """deluser""")
+// @LINE:52
+def delapply(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.delapply(id), HandlerDef(this, "controllers.Application", "delapply", Seq(classOf[Int]), "GET", """""", _prefix + """delapply""")
 )
                       
 
@@ -726,7 +726,7 @@ def register(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 
 // @LINE:20
 def postedititem(id:Int): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.postedititem(id), HandlerDef(this, "controllers.Application", "postedititem", Seq(classOf[Int]), "GET", """""", _prefix + """postedititem/$id<[^/]+>""")
+   controllers.Application.postedititem(id), HandlerDef(this, "controllers.Application", "postedititem", Seq(classOf[Int]), "POST", """""", _prefix + """postedititem/$id<[^/]+>""")
 )
                       
 

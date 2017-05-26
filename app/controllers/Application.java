@@ -17,17 +17,16 @@ import java.util.Map;
 
 public class Application extends Controller {
 
-    public static Result index() {
+    public static Result index() {                  //首页
         List<Commodity> commodity = Commodity.findNew();
         return ok(index.render(commodity));
     }
     
-    public static Result register() {
-        //Form<Registration> userForm = Form.form(Registration.class);
+    public static Result register() {       //注册
         return ok(views.html.register.render());
     }
 
-    public static Result postregister() {
+    public static Result postregister() {               //注册提交
         Form<Registration> userForm = Form.form(Registration.class).bindFromRequest();
         Registration registration = userForm.get();
         if(User.findByName(registration.username) != null)
@@ -37,17 +36,14 @@ public class Application extends Controller {
             powerid = 2;
         User user = new User(registration.username, registration.password, powerid);
         user.save();
-        session().clear();
-        session("user",registration.username);      //注册成功直接登录跳转
         return ok("success"); 
     }
     
-    public static Result login() {
-        //Form<Login> userForm = Form.form(Login.class);
+    public static Result login() {                //登录页面
         return ok(views.html.login.render());
     }
     
-    public static Result postlogin() {
+    public static Result postlogin() {            //登录
         Form<Login> userForm = Form.form(Login.class).bindFromRequest();
         if (userForm.hasErrors()) {
             return ok("Wrong user/password");
@@ -58,7 +54,7 @@ public class Application extends Controller {
         }
     }
     
-    public static Result item(int id) {
+    public static Result item(int id) {                     //返回商品页面
         if(id <1 || Commodity.findById(id)==null)
             return redirect("/");
         Commodity commodity = Commodity.findById(id);
@@ -67,38 +63,29 @@ public class Application extends Controller {
     }
     
     public static Result delitem(int id) {
-        if(id >0 && User.isseller(session("user")) && Store.hasStore(session("user")) && Commodity.isbelong(session("user"),id)){
+        if(id >0 && User.isseller(session("user")) && Store.hasStore(session("user")) && Commodity.isbelong(session("user"),id)){      //删除制定商品 商家权限
             Commodity.delById(id);
-            return ok("删除成功");
+            return redirect("/business");
         }
         return redirect("/login");
     }
     
-    public static Result edititem(int id) {
+    public static Result edititem(int id) {                               //有id返回修改 无id返回添加
         if(User.isseller(session("user")) && Store.hasStore(session("user"))){
             if(id < 1){
-                Form<Shelves> userForm = Form.form(Shelves.class);
-                return ok(views.html.additem.render(userForm));     
+                return ok(views.html.additem.render());     
             }
             if(Commodity.isbelong(session("user"),id)){
                 Commodity commodity = Commodity.findById(id);
-                Form<Commodity> userForm = Form.form(Commodity.class).fill(commodity);
-                return ok(views.html.edititem.render(userForm));
-                //return ok("asd");
+                return ok(views.html.edititem.render(commodity));
             }
         }
-        return redirect("/login");
+        return ok("你没有商店");
     }
     
     public static Result postitem() {                 //添加商品
-        /*
-        Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
-        Shelves shelve =  userForm.get();
-        */
         MultipartFormData body = request().body().asMultipartFormData();
         Map<String,String[]>  map = body.asFormUrlEncoded();
-        //System.out.println(map.get("commodityName")[0]);
-
         Commodity commodity = Commodity.chageByMap(map,session("user"));
         commodity.save();
         FilePart picture = body.getFile("picture");
@@ -108,13 +95,10 @@ public class Application extends Controller {
             File root = Play.application().path();
             file.renameTo(new File(root, "/public/uploads/commodity_" + commodity.commodityId));
         }
-        return ok("添加成功");
+        return redirect("/business");
     }
     
     public static Result postedititem(int id) {                    //修改商品
-    /*
-        Form<Shelves> userForm = Form.form(Shelves.class).bindFromRequest();
-        Shelves shelve =  userForm.get();*/
         MultipartFormData body = request().body().asMultipartFormData();
         Commodity keymap = Commodity.chageByMap(body.asFormUrlEncoded(),"");
         if(User.isseller(session("user")) && Commodity.isbelong(session("user"),id)){ 
@@ -124,10 +108,16 @@ public class Application extends Controller {
             commodity.agio = keymap.agio;
             commodity.cType = keymap.cType;
             commodity.save();
-            return ok("修改成功");
+            
+            FilePart picture = body.getFile("picture");
+            if (picture != null) {
+                String contentType = picture.getContentType(); 
+                File file   = picture.getFile();
+                File root = Play.application().path();
+                file.renameTo(new File(root, "/public/uploads/commodity_" + id));
+            }
+            return redirect("/business");
         }
-        
-        
         return redirect("/login");
     }
     
@@ -136,11 +126,15 @@ public class Application extends Controller {
         return ok(views.html.issue.render(papers));
     }
     
-    public static Result editissue() {                           //获取全部帖子
+    public static Result editissue() {                           //发帖子
+        if(!User.isseller(session("user")) && !User.isadmin(session("user")) && !User.iscustomer(session("user")))
+            return redirect("/login");
         return ok(views.html.editissue.render());
     }
   
     public static Result postissue() {                        //发表帖子
+        if(!User.isseller(session("user")) && !User.isadmin(session("user")) && !User.iscustomer(session("user")))
+            return redirect("/login");
         Form<Issue> userForm = Form.form(Issue.class).bindFromRequest();
         Issue issue = userForm.get();
         Paper paper= new Paper(issue.title,session("user"),issue.content);
@@ -152,11 +146,10 @@ public class Application extends Controller {
         if(User.isseller(session("user"))){ 
             if (Store.hasStore(session("user"))){
                 List<Commodity> commodity = Commodity.findByUser(session("user"));
-                return ok("进入你的商店");
+                return ok(manage.render(commodity));
             }
             else{
-                Form<Request> userForm = Form.form(Request.class);
-                return ok(views.html.addstore.render(userForm));
+                return ok(applyStore.render());
             }
         }
         return ok("你不是商家");
@@ -175,7 +168,7 @@ public class Application extends Controller {
     public static Result pass(int id) {                //管理员方法 商家审核通过
         if(User.isadmin(session("user"))){
             Checkstore.pass(id);
-            return ok("开店审核通过");
+            return redirect("/admin");
         }
         return redirect("/login");
     }
@@ -183,12 +176,12 @@ public class Application extends Controller {
     public static Result postdiscuss() {                  //发表评论
         Form<Discuss> userForm = Form.form(Discuss.class).bindFromRequest();
         Discuss discuss = userForm.get();
-       //if(User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
+        if(!discuss.content.equals("") && User.iscustomer(session("user")) && Bill.hasBuy(discuss.commodityId,session("user")) || User.isadmin(session("user"))){          //判断是不是买家和买过商品 用实体Bill实体类     
             Comment comment  = new Comment(discuss.commodityId, session("user"),discuss.content);
             comment.save();
             return ok("success");
-       // }
-       // return redirect("/login");
+        }
+        return ok("faild");
     }
     
     public static Result addcart(int id,int num) {
@@ -221,17 +214,14 @@ public class Application extends Controller {
     }
     
     public static Result admin() {                           //管理员界面
-        //if(!User.isadmin(session("user")))        
-       //     return redirect("/login");
+        if(!User.isadmin(session("user")))        
+            return redirect("/login");
         List<User> user= User.findAll();                          //所有用户
         List<Checkstore> checkstore = Checkstore.findAll();               //所有开店请求
         List<Store> store = Store.findAll();                        //所有商店
-        return ok(views.html.admin.render());
+        return ok(views.html.admin.render(user, store, checkstore));
     }
-    
-    public static Result contact() {                           //个人中心
-        return ok(views.html.contact.render());
-    }
+
 
     public static Result buy() {                           //购买
         if(!User.iscustomer(session("user")))              //不是顾客或没登录
@@ -240,26 +230,18 @@ public class Application extends Controller {
         return ok("购买成功");
     }
     
-    public static Result upload(int id) {                           //购买
-          MultipartFormData body = request().body().asMultipartFormData();
-          Map<String,String[]>  map = body.asFormUrlEncoded();
-          System.out.println(map.get("asd")[0]);
-          FilePart picture = body.getFile("picture");
-          if (picture != null) {
-            String contentType = picture.getContentType(); 
-            File file   = picture.getFile();
-            File root = Play.application().path();
-            file.renameTo(new File(root, "/public/uploads/commodity_" + id));
-            return ok("uploaded");
-          } else {
-            return badRequest("not a valid file");    
-          }
+    public static Result deluser(String username) {                           //删除用户
+        if(!User.isadmin(session("user")))        
+             return redirect("/login");
+        User.delByName(username);
+        return redirect("/admin");
     }
     
-    public static Result deluser(String username) {                           //删除用户
-        //if(!User.isadmin(session("user")))        
-        //     return redirect("/login");
-        User.delByName(username);
-        return ok("删除成功");
-    }
+    public static Result delapply(int id) {                     //删除开店申请  管理员权限
+        if(User.isadmin(session("user"))){
+            Checkstore.delapply(id);
+            return redirect("/admin");
+        }
+        return redirect("/login");
+   }
 }
