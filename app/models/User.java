@@ -69,4 +69,26 @@ public class User extends Model {
         User user = findByName(username);
         return username!=null && user.powerid == 3;
     }
+    
+    public static String current(String username) {
+        if(username == null)
+            return "登录";
+        User user = findByName(username);
+        String result="";
+        switch(user.powerid){
+            case 1: 
+                result = user.username+"[会员]";
+                break;
+            case 2:
+                result = user.username+"[商家]";
+                break;
+            case 3:
+                result = user.username+"[管理员]";
+                break;
+            default:
+                result = user.username+"[黑客]";
+                break;
+        }
+        return result;
+    }
 }

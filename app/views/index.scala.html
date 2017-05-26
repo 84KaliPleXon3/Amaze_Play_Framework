@@ -1,4 +1,4 @@
-@(lines: List[Commodity])
+@(lines: List[Commodity],current_user:String)
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="header-left">
 					<ul>
-						<li ><a href="/login"  >登录</a></li>
+						<li ><a href="/login"  >@current_user</a></li>
 						<li><a  href="/register"  >注册</a></li>
 
 					</ul>

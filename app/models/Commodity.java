@@ -9,6 +9,7 @@ import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 import java.util.Date;
 import java.util.Map;
+import java.io.File;
 
 @Entity
 public class Commodity extends Model {
@@ -45,8 +46,13 @@ public class Commodity extends Model {
         return find.where().eq("user", username).findList();
     }
     
-    public static void delById (int commodityId) {
+    public static void delById (int commodityId,String filepath) {
         find.ref(commodityId).delete();
+        
+        File file = new File(filepath);  
+        // 路径为文件且不为空则进行删除  
+        if (file.isFile() && file.exists())
+            file.delete();  
     }
     
     public static boolean isbelong (String username,int commodityId) {    //某个商品是否属于某个商家

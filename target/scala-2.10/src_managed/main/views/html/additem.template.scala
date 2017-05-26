@@ -75,7 +75,7 @@ Seq[Any](format.raw/*1.1*/("""<!-- <!DOCTYPE html>
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="/manage"><img src=""""),_display_(Seq[Any](/*50.34*/routes/*50.40*/.Assets.at("images/logo-dark.png"))),format.raw/*50.74*/("""" alt="Klorofil Logo" class="img-responsive logo"></a>
+				<a href="/"><img src=""""),_display_(Seq[Any](/*50.28*/routes/*50.34*/.Assets.at("images/logo-dark.png"))),format.raw/*50.68*/("""" alt="Klorofil Logo" class="img-responsive logo"></a>
 			</div>
 			<div class="container-fluid">
 				<div class="navbar-btn">
@@ -137,7 +137,7 @@ Seq[Any](format.raw/*1.1*/("""<!-- <!DOCTYPE html>
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="/manage" class="active"><i class="lnr lnr-home"></i> <span>后台管理</span></a></li>
+						<li><a href="/business" class="active"><i class="lnr lnr-home"></i> <span>后台管理</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -220,10 +220,10 @@ Seq[Any](format.raw/*1.1*/("""<!-- <!DOCTYPE html>
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 26 14:09:23 HKT 2017
+                    DATE: Fri May 26 16:02:37 HKT 2017
                     SOURCE: /root/Downloads/amaze/app/views/additem.scala.html
-                    HASH: efb1263b1a004a857ca4122ed05f766e21bc9ddd
-                    MATRIX: 857->0|1778->885|1793->891|1867->943|1937->977|1952->983|2032->1041|2102->1075|2117->1081|2181->1123|2251->1157|2266->1163|2341->1216|2430->1269|2445->1275|2507->1315|2650->1422|2665->1428|2721->1462|2954->1659|2969->1665|3026->1700|3121->1759|3136->1765|3190->1797|3395->1966|3410->1972|3466->2006|5953->4457|5968->4463|6020->4492
+                    HASH: 42d9539022bb0cf608853db3e1c85803f3cc8edd
+                    MATRIX: 857->0|1778->885|1793->891|1867->943|1937->977|1952->983|2032->1041|2102->1075|2117->1081|2181->1123|2251->1157|2266->1163|2341->1216|2430->1269|2445->1275|2507->1315|2650->1422|2665->1428|2721->1462|2954->1659|2969->1665|3026->1700|3121->1759|3136->1765|3190->1797|3389->1960|3404->1966|3460->2000|5947->4451|5962->4457|6014->4486
                     LINES: 29->1|57->29|57->29|57->29|58->30|58->30|58->30|59->31|59->31|59->31|60->32|60->32|60->32|62->34|62->34|62->34|64->36|64->36|64->36|68->40|68->40|68->40|69->41|69->41|69->41|78->50|78->50|78->50|119->91|119->91|119->91
                     -- GENERATED --
                 */

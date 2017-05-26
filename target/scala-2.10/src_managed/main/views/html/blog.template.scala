@@ -20,13 +20,13 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object blog extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[List[Paper],play.api.templates.HtmlFormat.Appendable] {
+object blog extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template2[List[Paper],String,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply/*1.2*/(lines: List[Paper]):play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(lines: List[Paper],current_user:String):play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*1.22*/("""
+Seq[Any](format.raw/*1.42*/("""
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		<div class="header-left">
 					<ul>
-						<li ><a class="lock"  href="/login"  >登录</a></li>
+						<li ><a class="lock"  href="/login"  >"""),_display_(Seq[Any](/*39.46*/current_user)),format.raw/*39.58*/("""</a></li>
 						<li><a class="lock" href="/register"  >注册</a></li>
 						<li>
 </li>
@@ -152,20 +152,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 """))}
     }
     
-    def render(lines:List[Paper]): play.api.templates.HtmlFormat.Appendable = apply(lines)
+    def render(lines:List[Paper],current_user:String): play.api.templates.HtmlFormat.Appendable = apply(lines,current_user)
     
-    def f:((List[Paper]) => play.api.templates.HtmlFormat.Appendable) = (lines) => apply(lines)
+    def f:((List[Paper],String) => play.api.templates.HtmlFormat.Appendable) = (lines,current_user) => apply(lines,current_user)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 26 13:57:07 HKT 2017
+                    DATE: Fri May 26 15:57:25 HKT 2017
                     SOURCE: /root/Downloads/amaze/app/views/blog.scala.html
-                    HASH: ae6b5d96fd03ea37abcddc8982bde0341ae8ee0f
-                    MATRIX: 778->1|892->21|994->88|1008->94|1068->133|1232->262|1246->268|1306->307|1417->382|1432->388|1489->423|2069->975|2098->976|2155->1004|2185->1005|2245->1036|2275->1037|2327->1060|2357->1061|2453->1121|2468->1127|2526->1163|2650->1251|2665->1257|2722->1292|2799->1341|2828->1342|2878->1364|2907->1365|2970->1392|2985->1398|3050->1441|3338->1701|3368->1702|3419->1724|3449->1725|3860->2100|3875->2106|3926->2135|4300->2473|4315->2479|4366->2508|5009->3116|5043->3134|5082->3135|5224->3241|5237->3245|5265->3251|5516->3466|5529->3470|5558->3477|5646->3529|5659->3533|5686->3538|5777->3593|5790->3597|5820->3605|6000->3753|6114->3838|6144->3839|6213->3879|6243->3880|6329->3937|6359->3938|6426->3977|6456->3978|6492->3986|6521->3987|6554->3992|6583->3993
-                    LINES: 26->1|29->1|34->6|34->6|34->6|36->8|36->8|36->8|39->11|39->11|39->11|45->17|45->17|45->17|45->17|45->17|45->17|45->17|45->17|48->20|48->20|48->20|49->21|49->21|49->21|50->22|50->22|50->22|50->22|51->23|51->23|51->23|61->33|61->33|61->33|61->33|76->48|76->48|76->48|89->61|89->61|89->61|111->83|111->83|111->83|114->86|114->86|114->86|119->91|119->91|119->91|120->92|120->92|120->92|123->95|123->95|123->95|129->101|134->106|134->106|136->108|136->108|138->110|138->110|140->112|140->112|141->113|141->113|142->114|142->114
+                    HASH: e3dc98dc898ebe13a0a9769cb0272a1910f63fde
+                    MATRIX: 785->1|919->41|1021->108|1035->114|1095->153|1259->282|1273->288|1333->327|1444->402|1459->408|1516->443|2096->995|2125->996|2182->1024|2212->1025|2272->1056|2302->1057|2354->1080|2384->1081|2480->1141|2495->1147|2553->1183|2677->1271|2692->1277|2749->1312|2826->1361|2855->1362|2905->1384|2934->1385|2997->1412|3012->1418|3077->1461|3365->1721|3395->1722|3446->1744|3476->1745|3666->1899|3700->1911|3956->2131|3971->2137|4022->2166|4396->2504|4411->2510|4462->2539|5105->3147|5139->3165|5178->3166|5320->3272|5333->3276|5361->3282|5612->3497|5625->3501|5654->3508|5742->3560|5755->3564|5782->3569|5873->3624|5886->3628|5916->3636|6096->3784|6210->3869|6240->3870|6309->3910|6339->3911|6425->3968|6455->3969|6522->4008|6552->4009|6588->4017|6617->4018|6650->4023|6679->4024
+                    LINES: 26->1|29->1|34->6|34->6|34->6|36->8|36->8|36->8|39->11|39->11|39->11|45->17|45->17|45->17|45->17|45->17|45->17|45->17|45->17|48->20|48->20|48->20|49->21|49->21|49->21|50->22|50->22|50->22|50->22|51->23|51->23|51->23|61->33|61->33|61->33|61->33|67->39|67->39|76->48|76->48|76->48|89->61|89->61|89->61|111->83|111->83|111->83|114->86|114->86|114->86|119->91|119->91|119->91|120->92|120->92|120->92|123->95|123->95|123->95|129->101|134->106|134->106|136->108|136->108|138->110|138->110|140->112|140->112|141->113|141->113|142->114|142->114
                     -- GENERATED --
                 */
             

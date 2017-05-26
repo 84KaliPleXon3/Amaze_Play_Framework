@@ -19,11 +19,13 @@ public class Application extends Controller {
 
     public static Result index() {                  //首页
         List<Commodity> commodity = Commodity.findNew();
-        return ok(index.render(commodity));
+        String current_user = User.current(session("user"));
+        return ok(index.render(commodity,current_user));
     }
     
     public static Result register() {       //注册
-        return ok(views.html.register.render());
+        String current_user = User.current(session("user"));
+        return ok(views.html.register.render(current_user));
     }
 
     public static Result postregister() {               //注册提交
@@ -40,7 +42,8 @@ public class Application extends Controller {
     }
     
     public static Result login() {                //登录页面
-        return ok(views.html.login.render());
+        String current_user = User.current(session("user"));
+        return ok(views.html.login.render(current_user));
     }
     
     public static Result postlogin() {            //登录
@@ -59,12 +62,13 @@ public class Application extends Controller {
             return redirect("/");
         Commodity commodity = Commodity.findById(id);
         List<Comment> comment = Comment.findById(id);
-        return ok(views.html.item.render(commodity,comment));
+        String current_user = User.current(session("user"));
+        return ok(views.html.item.render(commodity,comment,current_user));
     }
     
     public static Result delitem(int id) {
         if(id >0 && User.isseller(session("user")) && Store.hasStore(session("user")) && Commodity.isbelong(session("user"),id)){      //删除制定商品 商家权限
-            Commodity.delById(id);
+            Commodity.delById(id,Play.application().path()+"/public/uploads/commodity_" + id);
             return redirect("/business");
         }
         return redirect("/login");
@@ -86,16 +90,22 @@ public class Application extends Controller {
     public static Result postitem() {                 //添加商品
         MultipartFormData body = request().body().asMultipartFormData();
         Map<String,String[]>  map = body.asFormUrlEncoded();
-        Commodity commodity = Commodity.chageByMap(map,session("user"));
-        commodity.save();
-        FilePart picture = body.getFile("picture");
-        if (picture != null) {
-            String contentType = picture.getContentType(); 
-            File file   = picture.getFile();
-            File root = Play.application().path();
-            file.renameTo(new File(root, "/public/uploads/commodity_" + commodity.commodityId));
+        try{
+            Commodity commodity = Commodity.chageByMap(map,session("user"));
+            commodity.save();
+            FilePart picture = body.getFile("picture");
+            if (picture != null) {
+                String contentType = picture.getContentType(); 
+                File file   = picture.getFile();
+                File root = Play.application().path();
+                file.renameTo(new File(root, "/public/uploads/commodity_" + commodity.commodityId));
+            }
+            return redirect("/business");
+        }catch(Exception e){
+            //log 输入参数不规范
+            return ok("参数不规范");
         }
-        return redirect("/business");
+
     }
     
     public static Result postedititem(int id) {                    //修改商品
@@ -123,13 +133,15 @@ public class Application extends Controller {
     
     public static Result issue() {                           //获取全部帖子
         List<Paper> papers = Paper.findAll();
-        return ok(views.html.issue.render(papers));
+        String current_user = User.current(session("user"));
+        return ok(views.html.issue.render(papers,current_user));
     }
     
     public static Result editissue() {                           //发帖子
         if(!User.isseller(session("user")) && !User.isadmin(session("user")) && !User.iscustomer(session("user")))
             return redirect("/login");
-        return ok(views.html.editissue.render());
+        String current_user = User.current(session("user"));
+        return ok(views.html.editissue.render(current_user));
     }
   
     public static Result postissue() {                        //发表帖子
@@ -149,7 +161,8 @@ public class Application extends Controller {
                 return ok(manage.render(commodity));
             }
             else{
-                return ok(applyStore.render());
+                String current_user = User.current(session("user"));
+                return ok(applyStore.render(current_user));
             }
         }
         return ok("你不是商家");
@@ -203,7 +216,8 @@ public class Application extends Controller {
             commoditys.add(commodity);
             money += commodity.price * commodity.agio * item.number;
         }
-        return ok(views.html.cart.render(cart,commoditys,money));
+        String current_user = User.current(session("user"));
+        return ok(views.html.cart.render(cart,commoditys,money,current_user));
     }
     
     public static Result delcart(int id) {                           //删除购物车特定商品

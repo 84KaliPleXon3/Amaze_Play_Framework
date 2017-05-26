@@ -20,34 +20,35 @@ import play.api.data.Field
 import play.mvc.Http.Context.Implicit._
 import views.html._
 /**/
-object register extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template0[play.api.templates.HtmlFormat.Appendable] {
+object register extends BaseScalaTemplate[play.api.templates.HtmlFormat.Appendable,Format[play.api.templates.HtmlFormat.Appendable]](play.api.templates.HtmlFormat) with play.api.templates.Template1[String,play.api.templates.HtmlFormat.Appendable] {
 
     /**/
-    def apply():play.api.templates.HtmlFormat.Appendable = {
+    def apply/*1.2*/(current_user:String):play.api.templates.HtmlFormat.Appendable = {
         _display_ {
 
-Seq[Any](format.raw/*1.1*/("""<!DOCTYPE html>
+Seq[Any](format.raw/*1.23*/("""
+<!DOCTYPE html>
 <html>
 <head>
 <title>Register</title>
-<link href=""""),_display_(Seq[Any](/*5.14*/routes/*5.20*/.Assets.at("stylesheets/bootstrap.css"))),format.raw/*5.59*/("""" rel="stylesheet" type="text/css" media="all" />
+<link href=""""),_display_(Seq[Any](/*6.14*/routes/*6.20*/.Assets.at("stylesheets/bootstrap.css"))),format.raw/*6.59*/("""" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src=""""),_display_(Seq[Any](/*7.15*/routes/*7.21*/.Assets.at("javascripts/jquery.min.js"))),format.raw/*7.60*/(""""></script>
+<script src=""""),_display_(Seq[Any](/*8.15*/routes/*8.21*/.Assets.at("javascripts/jquery.min.js"))),format.raw/*8.60*/(""""></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href=""""),_display_(Seq[Any](/*10.14*/routes/*10.20*/.Assets.at("stylesheets/style.css"))),format.raw/*10.55*/("""" rel="stylesheet" type="text/css" media="all" />
+<link href=""""),_display_(Seq[Any](/*11.14*/routes/*11.20*/.Assets.at("stylesheets/style.css"))),format.raw/*11.55*/("""" rel="stylesheet" type="text/css" media="all" />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="New Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() """),format.raw/*16.78*/("""{"""),format.raw/*16.79*/(""" setTimeout(hideURLbar, 0); """),format.raw/*16.107*/("""}"""),format.raw/*16.108*/(""", false); function hideURLbar()"""),format.raw/*16.139*/("""{"""),format.raw/*16.140*/(""" window.scrollTo(0,1); """),format.raw/*16.163*/("""}"""),format.raw/*16.164*/(""" </script>
+<script type="application/x-javascript"> addEventListener("load", function() """),format.raw/*17.78*/("""{"""),format.raw/*17.79*/(""" setTimeout(hideURLbar, 0); """),format.raw/*17.107*/("""}"""),format.raw/*17.108*/(""", false); function hideURLbar()"""),format.raw/*17.139*/("""{"""),format.raw/*17.140*/(""" window.scrollTo(0,1); """),format.raw/*17.163*/("""}"""),format.raw/*17.164*/(""" </script>
 <!--fonts-->
 <!-- start menu -->
-<link href=""""),_display_(Seq[Any](/*19.14*/routes/*19.20*/.Assets.at("stylesheets/memenu.css"))),format.raw/*19.56*/("""" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src=""""),_display_(Seq[Any](/*20.38*/routes/*20.44*/.Assets.at("javascripts/memenu.js"))),format.raw/*20.79*/(""""></script>
-<script>$(document).ready(function()"""),format.raw/*21.37*/("""{"""),format.raw/*21.38*/("""$(".memenu").memenu();"""),format.raw/*21.60*/("""}"""),format.raw/*21.61*/(""");</script>
-<script src=""""),_display_(Seq[Any](/*22.15*/routes/*22.21*/.Assets.at("javascripts/simpleCart.min.js"))),format.raw/*22.64*/(""""> </script>
+<link href=""""),_display_(Seq[Any](/*20.14*/routes/*20.20*/.Assets.at("stylesheets/memenu.css"))),format.raw/*20.56*/("""" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src=""""),_display_(Seq[Any](/*21.38*/routes/*21.44*/.Assets.at("javascripts/memenu.js"))),format.raw/*21.79*/(""""></script>
+<script>$(document).ready(function()"""),format.raw/*22.37*/("""{"""),format.raw/*22.38*/("""$(".memenu").memenu();"""),format.raw/*22.60*/("""}"""),format.raw/*22.61*/(""");</script>
+<script src=""""),_display_(Seq[Any](/*23.15*/routes/*23.21*/.Assets.at("javascripts/simpleCart.min.js"))),format.raw/*23.64*/(""""> </script>
 </head>
 <body>
 <!--header-->
@@ -56,20 +57,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="search">
 					<form>
-						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') """),format.raw/*31.99*/("""{"""),format.raw/*31.100*/("""this.value = 'Search';"""),format.raw/*31.122*/("""}"""),format.raw/*31.123*/("""">
+						<input type="text" value="Search " onfocus="this.value = '';" onblur="if (this.value == '') """),format.raw/*32.99*/("""{"""),format.raw/*32.100*/("""this.value = 'Search';"""),format.raw/*32.122*/("""}"""),format.raw/*32.123*/("""">
 						<input type="submit" value="Go">
 					</form>
 			</div>
 			<div class="header-left">
 					<ul>
-						<li ><a class="lock"  href="/login"  >登录</a></li>
+						<li ><a class="lock"  href="/login"  >"""),_display_(Seq[Any](/*38.46*/current_user)),format.raw/*38.58*/("""</a></li>
 						<li><a class="lock" href="/register"  >注册</a></li>
 					</ul>
 					<div class="cart box_1">
 						<a href="/checkout">
 						<h3> <div class="total">
 							购物车</div>
-							<img src=""""),_display_(Seq[Any](/*44.19*/routes/*44.25*/.Assets.at("images/cart.png"))),format.raw/*44.54*/("""" alt=""/></h3>
+							<img src=""""),_display_(Seq[Any](/*45.19*/routes/*45.25*/.Assets.at("images/cart.png"))),format.raw/*45.54*/("""" alt=""/></h3>
 						</a>
 												<!-- <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
 
@@ -82,7 +83,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="container">
 			<div class="head-top">
 				<div class="logo">
-					<a href="/"><img src=""""),_display_(Seq[Any](/*57.29*/routes/*57.35*/.Assets.at("images/logo.png"))),format.raw/*57.64*/("""" alt=""></a>
+					<a href="/"><img src=""""),_display_(Seq[Any](/*58.29*/routes/*58.35*/.Assets.at("images/logo.png"))),format.raw/*58.64*/("""" alt=""></a>
 				</div>
 		  <div class=" h_menu4">
 					<ul class="memenu skyblue">
@@ -256,42 +257,42 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 </div>
 <script>
-	$(document).ready(function () """),format.raw/*231.32*/("""{"""),format.raw/*231.33*/("""
-			$(".tijiao").click(function () """),format.raw/*232.35*/("""{"""),format.raw/*232.36*/("""
+	$(document).ready(function () """),format.raw/*232.32*/("""{"""),format.raw/*232.33*/("""
+			$(".tijiao").click(function () """),format.raw/*233.35*/("""{"""),format.raw/*233.36*/("""
 					var username = $("#username").val();
 					var idtentify  = $('#supple option:selected').val();
 					var password = $("#password").val();
 					var repassword = $("#repassword").val();
 					var sellers = false;
-					if(password!=repassword)"""),format.raw/*238.30*/("""{"""),format.raw/*238.31*/("""
+					if(password!=repassword)"""),format.raw/*239.30*/("""{"""),format.raw/*239.31*/("""
 						 alert("两次密码不一致！");
 						 window.location.href="http://localhost:9000/register";
-					"""),format.raw/*241.6*/("""}"""),format.raw/*241.7*/("""else"""),format.raw/*241.11*/("""{"""),format.raw/*241.12*/("""
-						if(idtentify==1)"""),format.raw/*242.23*/("""{"""),format.raw/*242.24*/("""
+					"""),format.raw/*242.6*/("""}"""),format.raw/*242.7*/("""else"""),format.raw/*242.11*/("""{"""),format.raw/*242.12*/("""
+						if(idtentify==1)"""),format.raw/*243.23*/("""{"""),format.raw/*243.24*/("""
 							 sellers = false;
-						"""),format.raw/*244.7*/("""}"""),format.raw/*244.8*/("""else"""),format.raw/*244.12*/("""{"""),format.raw/*244.13*/("""
+						"""),format.raw/*245.7*/("""}"""),format.raw/*245.8*/("""else"""),format.raw/*245.12*/("""{"""),format.raw/*245.13*/("""
 							 sellers = true;
-						"""),format.raw/*246.7*/("""}"""),format.raw/*246.8*/("""
-						var data = """),format.raw/*247.18*/("""{"""),format.raw/*247.19*/("""
+						"""),format.raw/*247.7*/("""}"""),format.raw/*247.8*/("""
+						var data = """),format.raw/*248.18*/("""{"""),format.raw/*248.19*/("""
 							"username":username,
 							"password":password,
 							"sellers":sellers
-						"""),format.raw/*251.7*/("""}"""),format.raw/*251.8*/("""
-						$.ajax("""),format.raw/*252.14*/("""{"""),format.raw/*252.15*/("""
+						"""),format.raw/*252.7*/("""}"""),format.raw/*252.8*/("""
+						$.ajax("""),format.raw/*253.14*/("""{"""),format.raw/*253.15*/("""
 								url:"/register",
 								type:"post",
 								data:data,
-								success:function (data) """),format.raw/*256.33*/("""{"""),format.raw/*256.34*/("""
-									if(data=="success")"""),format.raw/*257.29*/("""{"""),format.raw/*257.30*/("""
+								success:function (data) """),format.raw/*257.33*/("""{"""),format.raw/*257.34*/("""
+									if(data=="success")"""),format.raw/*258.29*/("""{"""),format.raw/*258.30*/("""
 										 alert("注册成功！");
 										 window.location.href="/login";
-									"""),format.raw/*260.10*/("""}"""),format.raw/*260.11*/("""
-								"""),format.raw/*261.9*/("""}"""),format.raw/*261.10*/("""
-						"""),format.raw/*262.7*/("""}"""),format.raw/*262.8*/(""")
-					"""),format.raw/*263.6*/("""}"""),format.raw/*263.7*/("""
+									"""),format.raw/*261.10*/("""}"""),format.raw/*261.11*/("""
+								"""),format.raw/*262.9*/("""}"""),format.raw/*262.10*/("""
+						"""),format.raw/*263.7*/("""}"""),format.raw/*263.8*/(""")
+					"""),format.raw/*264.6*/("""}"""),format.raw/*264.7*/("""
 
-			"""),format.raw/*265.4*/("""}"""),format.raw/*265.5*/(""")
-	"""),format.raw/*266.2*/("""}"""),format.raw/*266.3*/(""")
+			"""),format.raw/*266.4*/("""}"""),format.raw/*266.5*/(""")
+	"""),format.raw/*267.2*/("""}"""),format.raw/*267.3*/(""")
 </script>
 
 <!--//content-->
@@ -305,20 +306,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 """))}
     }
     
-    def render(): play.api.templates.HtmlFormat.Appendable = apply()
+    def render(current_user:String): play.api.templates.HtmlFormat.Appendable = apply(current_user)
     
-    def f:(() => play.api.templates.HtmlFormat.Appendable) = () => apply()
+    def f:((String) => play.api.templates.HtmlFormat.Appendable) = (current_user) => apply(current_user)
     
     def ref: this.type = this
 
 }
                 /*
                     -- GENERATED --
-                    DATE: Fri May 26 14:34:21 HKT 2017
+                    DATE: Fri May 26 15:57:24 HKT 2017
                     SOURCE: /root/Downloads/amaze/app/views/register.scala.html
-                    HASH: ac922ba3f8b47eb1d4f6b15714487a74f05c205b
-                    MATRIX: 858->0|964->71|978->77|1038->116|1202->245|1216->251|1276->290|1387->365|1402->371|1459->406|2039->958|2068->959|2125->987|2155->988|2215->1019|2245->1020|2297->1043|2327->1044|2423->1104|2438->1110|2496->1146|2620->1234|2635->1240|2692->1275|2769->1324|2798->1325|2848->1347|2877->1348|2940->1375|2955->1381|3020->1424|3306->1682|3336->1683|3387->1705|3417->1706|3817->2070|3832->2076|3883->2105|4263->2449|4278->2455|4329->2484|10865->8991|10895->8992|10960->9028|10990->9029|11269->9279|11299->9280|11424->9377|11453->9378|11486->9382|11516->9383|11569->9407|11599->9408|11661->9442|11690->9443|11723->9447|11753->9448|11814->9481|11843->9482|11891->9501|11921->9502|12041->9594|12070->9595|12114->9610|12144->9611|12275->9713|12305->9714|12364->9744|12394->9745|12505->9827|12535->9828|12573->9838|12603->9839|12639->9847|12668->9848|12704->9856|12733->9857|12768->9864|12797->9865|12829->9869|12858->9870
-                    LINES: 29->1|33->5|33->5|33->5|35->7|35->7|35->7|38->10|38->10|38->10|44->16|44->16|44->16|44->16|44->16|44->16|44->16|44->16|47->19|47->19|47->19|48->20|48->20|48->20|49->21|49->21|49->21|49->21|50->22|50->22|50->22|59->31|59->31|59->31|59->31|72->44|72->44|72->44|85->57|85->57|85->57|259->231|259->231|260->232|260->232|266->238|266->238|269->241|269->241|269->241|269->241|270->242|270->242|272->244|272->244|272->244|272->244|274->246|274->246|275->247|275->247|279->251|279->251|280->252|280->252|284->256|284->256|285->257|285->257|288->260|288->260|289->261|289->261|290->262|290->262|291->263|291->263|293->265|293->265|294->266|294->266
+                    HASH: d4b4d42146ace44c2a4718d3b83abf01ec291c22
+                    MATRIX: 777->1|892->22|1000->95|1014->101|1074->140|1238->269|1252->275|1312->314|1423->389|1438->395|1495->430|2075->982|2104->983|2161->1011|2191->1012|2251->1043|2281->1044|2333->1067|2363->1068|2459->1128|2474->1134|2532->1170|2656->1258|2671->1264|2728->1299|2805->1348|2834->1349|2884->1371|2913->1372|2976->1399|2991->1405|3056->1448|3342->1706|3372->1707|3423->1729|3453->1730|3644->1885|3678->1897|3922->2105|3937->2111|3988->2140|4368->2484|4383->2490|4434->2519|10970->9026|11000->9027|11065->9063|11095->9064|11374->9314|11404->9315|11529->9412|11558->9413|11591->9417|11621->9418|11674->9442|11704->9443|11766->9477|11795->9478|11828->9482|11858->9483|11919->9516|11948->9517|11996->9536|12026->9537|12146->9629|12175->9630|12219->9645|12249->9646|12380->9748|12410->9749|12469->9779|12499->9780|12610->9862|12640->9863|12678->9873|12708->9874|12744->9882|12773->9883|12809->9891|12838->9892|12873->9899|12902->9900|12934->9904|12963->9905
+                    LINES: 26->1|29->1|34->6|34->6|34->6|36->8|36->8|36->8|39->11|39->11|39->11|45->17|45->17|45->17|45->17|45->17|45->17|45->17|45->17|48->20|48->20|48->20|49->21|49->21|49->21|50->22|50->22|50->22|50->22|51->23|51->23|51->23|60->32|60->32|60->32|60->32|66->38|66->38|73->45|73->45|73->45|86->58|86->58|86->58|260->232|260->232|261->233|261->233|267->239|267->239|270->242|270->242|270->242|270->242|271->243|271->243|273->245|273->245|273->245|273->245|275->247|275->247|276->248|276->248|280->252|280->252|281->253|281->253|285->257|285->257|286->258|286->258|289->261|289->261|290->262|290->262|291->263|291->263|292->264|292->264|294->266|294->266|295->267|295->267
                     -- GENERATED --
                 */
             
