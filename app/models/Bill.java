@@ -32,7 +32,20 @@ public class Bill extends Model {
     public static List<Bill> findByUser (String username) {                //返回某个买家买过的所有商品
         return find.where().eq("user", username).findList();
     }
-    
+
+    public static List<Bill> findBycommodity (int commodityId) {                //返回某个买家买过的所有商品
+        return find.where().eq("commodityId", commodityId).findList();
+    }
+
+    public static List<Bill> findBySeller (String username) {                //返回某个卖家卖出的所有商品
+        List<Commodity> Commoditys_belong_Seller = Commodity.findByUser(username);
+        List<Bill> result = findBycommodity(Commoditys_belong_Seller.get(0).commodityId);
+        for (int i=1; i<Commoditys_belong_Seller.size(); i++) {
+            result.addAll(findBycommodity(Commoditys_belong_Seller.get(i).commodityId));
+        }
+        return result;
+    }
+
     public static boolean hasBuy(int commodityId,String username) {
         boolean hasbuy = false;
         List<Bill> bill = findByUser(username);

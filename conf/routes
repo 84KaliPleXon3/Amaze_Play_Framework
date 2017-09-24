@@ -5,6 +5,10 @@
 # Home page
 GET     /                           controllers.Application.index()
 
+GET     /logout                     controllers.Application.logout()
+
+GET     /user                     controllers.Application.usercenter()
+
 GET     /register                   controllers.Application.register()
     
 POST    /register                   controllers.Application.postregister()

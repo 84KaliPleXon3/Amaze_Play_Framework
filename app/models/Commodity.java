@@ -60,6 +60,10 @@ public class Commodity extends Model {
         return commodity!=null && commodity.user.equals(username);
     }
     
+    public static Store get_store (int commodityId) {    //某个商品属于哪个商店
+        return Store.findByUser(findById(commodityId).user);
+    }    
+
     public static List<Commodity> findNew () {                //返回属于某个商家的所有商品
         return find.where().orderBy().desc("commodityId").setMaxRows(6).findList();
     }

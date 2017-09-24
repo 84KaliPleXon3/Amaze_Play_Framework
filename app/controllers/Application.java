@@ -56,7 +56,18 @@ public class Application extends Controller {
             return ok("success");
         }
     }
-    
+
+    public static Result logout() {       //注册
+        session().clear();
+        return redirect("/");
+    }
+
+    public static Result usercenter() {       //用户中心
+        if(!User.iscustomer(session("user")))
+            return redirect("/login");
+        return ok(usercenter.render());
+    }
+
     public static Result item(int id) {                     //返回商品页面
         if(id <1 || Commodity.findById(id)==null)
             return redirect("/");
@@ -158,7 +169,8 @@ public class Application extends Controller {
         if(User.isseller(session("user"))){ 
             if (Store.hasStore(session("user"))){
                 List<Commodity> commodity = Commodity.findByUser(session("user"));
-                return ok(manage.render(commodity));
+                List<Bill> bills = Bill.findBySeller(session("user"));
+                return ok(manage.render(commodity,bills));
             }
             else{
                 String current_user = User.current(session("user"));
