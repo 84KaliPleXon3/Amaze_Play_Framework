@@ -1,2 +1,2 @@
 ## 在线商城
-Play Framework
+Play Framework 2.xx
